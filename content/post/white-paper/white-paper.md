@@ -2,6 +2,7 @@
 title: "App Note 120"
 date: 2021-05-20T14:04:45+02:00
 description: "Announcing a new series of app notes"
+tags: ["app note"]
 ---
 
 For a long time people have asked us for quality long form content that shows how to
