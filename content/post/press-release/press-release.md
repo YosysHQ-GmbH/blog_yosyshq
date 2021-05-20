@@ -1,6 +1,6 @@
 ---
 title: "Press Release"
-date: 2021-01-01
+date: 2021-02-08
 description : "YosysHQ is the new home for the team maintaining Yosys and related Open Source EDA projects"
 tags: ["blog"]
 ---
