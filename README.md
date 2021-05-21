@@ -13,7 +13,7 @@ Instructions for viewing locally
     $ cd blog_yosyshq
     $ hugo server
 
-Now open http://localhost:1313/ in your browser.
+Now open the localhost URL that `hugo server` printed to the console in your browser.
 
 Whenever you safe a change to a file, the perview in your browser is updated
 in real time.
@@ -34,4 +34,3 @@ running `build.sh` for the first time:
 Finally, pushing your changes to the life website:
 
     $ bash publish.sh
-
