@@ -18,6 +18,6 @@ What You will learn in this app note:
 * Weak precondition cover and witness
 * How to apply that to a practical HDL code example
 
-https://yosyshq-subprj-doc.readthedocs.io/projects/weak_precond_and_witness/en/latest/
+https://yosyshq.readthedocs.io/projects/ap120
 
 Feel free to give us feedback and suggest new topics.
