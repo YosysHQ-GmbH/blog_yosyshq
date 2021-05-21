@@ -7,3 +7,4 @@ git -C public rm -r .
 echo blog.yosyshq.com > public/CNAME
 hugo -e production
 git -C public add -A
+git -C public status
