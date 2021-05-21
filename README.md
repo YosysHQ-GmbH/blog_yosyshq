@@ -27,7 +27,7 @@ Simply build the static files and placing them in `public/` is easy:
 
 However, if you also want to push your changes it's recommended to use
 the `build.sh` script instead (make sure `public/` doesn't exist yet when
-running `build.sh` for the first time:
+running `build.sh` for the first time):
 
     $ bash build.sh
 
