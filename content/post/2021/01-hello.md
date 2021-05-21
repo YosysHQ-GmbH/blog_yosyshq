@@ -1,8 +1,9 @@
 ---
-title: "Press Release"
+title: "Hello World!"
 date: 2021-02-08
 description : "YosysHQ is the new home for the team maintaining Yosys and related Open Source EDA projects"
 tags: ["blog"]
+slug: hello
 ---
 
 [YosysHQ.com](https://www.yosyshq.com) is the new home for the team maintaining Yosys and the related Open Source EDA projects, and the commercial products and services we offer.

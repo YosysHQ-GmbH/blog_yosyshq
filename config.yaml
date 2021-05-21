@@ -1,4 +1,4 @@
-baseurl: https://yosyshq-gmbh.github.io
+baseurl: http://blog.yosyshq.com/
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
@@ -72,11 +72,8 @@ params:
 
     opengraph:
         twitter:
-            # Your Twitter username
-            site:
-
-            # Available values: summary, summary_large_image
-            card: summary_large_image
+            site: "@YosysHQ"
+            card: summary
 
     defaultImage:
         opengraph:
