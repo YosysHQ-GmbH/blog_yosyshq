@@ -3,7 +3,8 @@ title: "Why Asynchronous Load Flip-Flops Should Be Avoided"
 description: "By Claire Xenia Wolf"
 date: 2021-11-30
 slug: async-load-ff
-draft: true
+image: "/static-2021/asyncff.png"
+draft: false
 ---
 
 Code: https://github.com/YosysHQ-Docs/Blog-Async-Load-FFs
@@ -19,9 +20,10 @@ An asynchronous load flip-flop is a type of flip-flop with asynchronous reset fo
 ```SystemVerilog
 reg async_load_ff_q;
 wire async_load_ff_reset_val = <dynamic_expression>;
+
 always_ff @(posedge clock, posedge load)
-	if (load) async_load_ff_q <= async_load_ff_reset_val;
-	else      async_load_ff_q <= ...;
+    if (load) async_load_ff_q <= async_load_ff_reset_val;
+    else      async_load_ff_q <= ...;
 ```
 
 This distinguishes them from the more common asynchronous set (reset) flip-flops, for which the reset value is a compile-time (synthesis-time) constant.
@@ -29,9 +31,10 @@ This distinguishes them from the more common asynchronous set (reset) flip-flops
 ```SystemVerilog
 reg async_reset_ff_q;
 localparam async_reset_ff_reset_val = <constant_expression>;
+
 always_ff @(posedge clock, posedge reset)
-	if (reset) async_reset_ff_q <= async_reset_ff_reset_val;
-	else       async_reset_ff_q <= ...;
+    if (reset) async_reset_ff_q <= async_reset_ff_reset_val;
+    else       async_reset_ff_q <= ...;
 ```
 
 IEEE Std 1364.1-2002, the IEEE Standard for Verilog Register Transfer Level Synthesis, does allow such asynchronous load flip-flops in synthesis, but states that the synthesis results will only match the behavior of the original Verilog code under certain conditions.
@@ -44,20 +47,20 @@ Consider the following SystemVerilog design ([dut.sv](https://github.com/YosysHQ
 
 ```SystemVerilog
 module dut (
-	input clk1, clk2, arst,
-	output reg [7:0] cnt1, cnt2
+    input clk1, clk2, arst,
+    output reg [7:0] cnt1, cnt2
 );
-	always_ff @(posedge clk1 or posedge arst)
-		if (arst)
-			cnt1 <= 0;  // constant expression (async reset)
-		else
-			cnt1 <= cnt1 + 7;
-	
-	always_ff @(posedge clk2 or posedge arst)
-		if (arst)
-			cnt2 <= cnt1;  // dynamic expression (async load)
-		else
-			cnt2 <= cnt2 + 11;
+    always_ff @(posedge clk1 or posedge arst)
+        if (arst)
+            cnt1 <= 0;  // constant expression (async reset)
+        else
+            cnt1 <= cnt1 + 7;
+    
+    always_ff @(posedge clk2 or posedge arst)
+        if (arst)
+            cnt2 <= cnt1;  // dynamic expression (async load)
+        else
+            cnt2 <= cnt2 + 11;
 endmodule
 ```
 
@@ -65,34 +68,34 @@ And the following test bench ([tb.sv](https://github.com/YosysHQ-Docs/Blog-Async
 
 ```SystemVerilog
 module tb;
-	reg clk1 = 0, clk2 = 0, arst = 0;
-	wire [7:0] cnt1, cnt2;
+    reg clk1 = 0, clk2 = 0, arst = 0;
+    wire [7:0] cnt1, cnt2;
 
-	dut dut (clk1, clk2, arst, cnt1, cnt2);
+    dut dut (clk1, clk2, arst, cnt1, cnt2);
 
-	task do_clk1;
-		clk1 = 1; #5; clk1 = 0; #5;
-	endtask
+    task do_clk1;
+        clk1 = 1; #5; clk1 = 0; #5;
+    endtask
 
-	task do_clk2;
-		clk2 = 1; #5; clk2 = 0; #5;
-	endtask
+    task do_clk2;
+        clk2 = 1; #5; clk2 = 0; #5;
+    endtask
 
-	task do_arst;
-			arst = 1; #5; arst = 0; #5;
+    task do_arst;
+        arst = 1; #5; arst = 0; #5;
 `ifdef DOUBLE_ARST
-			arst = 1; #5; arst = 0; #5;
+        arst = 1; #5; arst = 0; #5;
 `endif
-	endtask
+    endtask
 
-	initial begin
-		#10;
-		do_arst;			$display(cnt1, cnt2);
-		repeat (5) do_clk1;	$display(cnt1, cnt2);
-		do_arst;			$display(cnt1, cnt2, " <--");
-		repeat (5) do_clk2;	$display(cnt1, cnt2);
-		do_arst;			$display(cnt1, cnt2);
-	end
+    initial begin
+        #10;
+        do_arst;              $display(cnt1, cnt2);
+        repeat (5) do_clk1;   $display(cnt1, cnt2);
+        do_arst;              $display(cnt1, cnt2, " <--");
+        repeat (5) do_clk2;   $display(cnt1, cnt2);
+        do_arst;              $display(cnt1, cnt2);
+    end
 endmodule
 ```
 
@@ -122,6 +125,8 @@ In the first case with a single pulse on arst, the second counter is reset to th
 
 But a real-world asynchronous load flip-flop would of course behave like a transparent latch while the reset pulse is high, propagating the new (zero) value of the first counter to the second counter register. But this only happens in simulation when we pulse the reset signal a second time.
 
+![Double-Async-Reset Waveform](/static-2021/asyncff.png)
+
 This can lead to non-trivial simulation-synthesis mismatches that are hard to debug, and may result in a chip that does not function as expected.
 
 Thus, asynchronous load flip-flops should be avoided in (System)Verilog designs, or at least it should be formally verified that the asynchronous load value of such a flip-flop can never change while the reset signal is active.
@@ -150,11 +155,11 @@ The new DUT would look something like this ([dut_myff.sv](https://github.com/Yos
 
 ```SystemVerilog
 module dut (
-	input clk1, clk2, arst,
-	output reg [7:0] cnt1, cnt2
+    input clk1, clk2, arst,
+    output reg [7:0] cnt1, cnt2
 );
-	myff ff1[7:0] (cnt1, cnt1 + 8'd  7, clk1, arst, 8'h 00),
-	     ff2[7:0] (cnt2, cnt2 + 8'd 11, clk2, arst,   cnt1);
+    myff ff1[7:0] (cnt1, cnt1 + 8'd  7, clk1, arst, 8'h 00),
+         ff2[7:0] (cnt2, cnt2 + 8'd 11, clk2, arst,   cnt1);
 endmodule
 ```
 
@@ -166,31 +171,31 @@ Verilog UDP primitives can be used to correctly model the behavior of asynchrono
 
 ```SystemVerilog
 `ifdef SYNTHESES
-	module myff (
-		output reg q,
-		input d, clk, arst, rval
-	);
-		always @(posedge clk or posedge arst)
-			if (arst) q <= rval;
-			else      q <= d;
-	endmodule
+    module myff (
+        output reg q,
+        input d, clk, arst, rval
+    );
+        always @(posedge clk or posedge arst)
+            if (arst) q <= rval;
+            else      q <= d;
+    endmodule
 `else
-	primitive myff (q, d, clk, arst, rval);
-		input d, clk, arst, rval;
-		reg q;
-		output q;
-		table
-		// D C R V : Q : Q'
-		   ? ? 1 0 : ? : 0 ; // async reset
-		   ? ? 1 1 : ? : 1 ; // async set
-		   0 p 0 ? : ? : 0 ; // posedge clock, d=0
-		   1 p 0 ? : ? : 1 ; // posedge clock, d=1
-		   ? n 0 ? : ? : - ; // negedge clock
-		   * ? ? ? : ? : - ; // any data edge
-		   ? ? * ? : ? : - ; // any arst edge
-		   ? ? ? * : ? : - ; // any rval edge
-		endtable
-	endprimitive
+    primitive myff (q, d, clk, arst, rval);
+        input d, clk, arst, rval;
+        reg q;
+        output q;
+        table
+        // D C R V : Q : Q'
+           ? ? 1 0 : ? : 0 ; // async reset
+           ? ? 1 1 : ? : 1 ; // async set
+           0 p 0 ? : ? : 0 ; // posedge clock, d=0
+           1 p 0 ? : ? : 1 ; // posedge clock, d=1
+           ? n 0 ? : ? : - ; // negedge clock
+           * ? ? ? : ? : - ; // any data edge
+           ? ? * ? : ? : - ; // any arst edge
+           ? ? ? * : ? : - ; // any rval edge
+        endtable
+    endprimitive
 `endif
 ```
 
@@ -213,16 +218,16 @@ Another approach is to “fix up” the asynchronous load using procedural assig
 
 ```SystemVerilog
 module myff (
-	output reg q,
-	input d, clk, arst, rval
+    output reg q,
+    input d, clk, arst, rval
 );
-	always_ff @(posedge clk or posedge arst)
-		if (arst) q <= rval;
-		else      q <= d;
+    always_ff @(posedge clk or posedge arst)
+        if (arst) q <= rval;
+        else      q <= d;
 `ifndef SYNTHESES
-	always @(arst)
-		if (arst) assign q = rval;
-		else    deassign q;
+    always @(arst)
+        if (arst) assign q = rval;
+        else    deassign q;
 `endif
 endmodule
 ```
@@ -243,25 +248,25 @@ Of course it’s also possible to use procedural assign and deassign directly in
 
 ```SystemVerilog
 module dut (
-	input clk1, clk2, arst,
-	output reg [7:0] cnt1, cnt2
+    input clk1, clk2, arst,
+    output reg [7:0] cnt1, cnt2
 );
-	always_ff @(posedge clk1 or posedge arst)
-		if (arst)
-			cnt1 <= 0;
-		else
-			cnt1 <= cnt1 + 7;
-	
-	always_ff @(posedge clk2 or posedge arst)
-		if (arst)
-			cnt2 <= cnt1;
-		else
-			cnt2 <= cnt2 + 11;
-	
+    always_ff @(posedge clk1 or posedge arst)
+        if (arst)
+            cnt1 <= 0;
+        else
+            cnt1 <= cnt1 + 7;
+    
+    always_ff @(posedge clk2 or posedge arst)
+        if (arst)
+            cnt2 <= cnt1;
+        else
+            cnt2 <= cnt2 + 11;
+    
 `ifndef SYNTHESIS
-	always @(arst)
-		if (arst) assign cnt2 = cnt1;
-		else    deassign cnt2;
+    always @(arst)
+        if (arst) assign cnt2 = cnt1;
+        else    deassign cnt2;
 `endif
 endmodule
 ```
@@ -274,27 +279,27 @@ The following technique is used on some FPGA architectures to emulate asynchrono
 
 ```SystemVerilog
 module myff (
-	output q,
-	input d, clk, arst, rval
+    output q,
+    input d, clk, arst, rval
 );
-	// a latch to store the async-load value
-	reg latched_rval;
-	always @*
-		if (arst) latched_rval = rval;
+    // a latch to store the async-load value
+    reg latched_rval;
+    always @*
+        if (arst) latched_rval = rval;
 
-	// a regular FF to store the clocked data value
-	reg q_without_reset;
-	always @(posedge clk)
-		q_without_reset <= d;
+    // a regular FF to store the clocked data value
+    reg q_without_reset;
+    always @(posedge clk)
+        q_without_reset <= d;
 
-	// an asynchronous-reset flip-flop to remember last event
-	reg last_event_was_clock;
-	always @(posedge clk or posedge arst)
-		if (arst) last_event_was_clock <= 0;
-		else      last_event_was_clock <= 1;
-	
-	// output either the latched reset value or clocked data value
-	assign q = last_event_was_clock ? q_without_reset : latched_rval;
+    // an asynchronous-reset flip-flop to remember last event
+    reg last_event_was_clock;
+    always @(posedge clk or posedge arst)
+        if (arst) last_event_was_clock <= 0;
+        else      last_event_was_clock <= 1;
+    
+    // output either the latched reset value or clocked data value
+    assign q = last_event_was_clock ? q_without_reset : latched_rval;
 endmodule
 ```
 
