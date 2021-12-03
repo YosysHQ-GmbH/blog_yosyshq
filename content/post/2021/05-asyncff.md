@@ -170,7 +170,7 @@ When instantiating a Vendor primitive one should always double-check that the ve
 Verilog UDP primitives can be used to correctly model the behavior of asynchronous load flip-flops. But UDPs are not synthesizable, so we need to also provide a synthesizable implementation of an asynchronous load flip-flop ([myff_udp.sv](https://github.com/YosysHQ-Docs/Blog-Async-Load-FFs/blob/main/myff_udp.sv)):
 
 ```SystemVerilog
-`ifdef SYNTHESES
+`ifdef SYNTHESIS
     module myff (
         output reg q,
         input d, clk, arst, rval
@@ -224,7 +224,7 @@ module myff (
     always_ff @(posedge clk or posedge arst)
         if (arst) q <= rval;
         else      q <= d;
-`ifndef SYNTHESES
+`ifndef SYNTHESIS
     always @(arst)
         if (arst) assign q = rval;
         else    deassign q;
