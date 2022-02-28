@@ -23,8 +23,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    # for some reason hugo isn't translating the filename for the favicon, so put the full path
-    favicon: logos/YOS_mark_square_hu6bb8cbdbd2526742846cc00545eb2d90_33709_300x0_resize_box_2.png
+    favicon: /favicon.png
 
     footer:
         since: 2020
