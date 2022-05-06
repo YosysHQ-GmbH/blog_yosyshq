@@ -4,6 +4,7 @@ date: 2022-02-28T11:23:54+01:00
 description : "Yosys is the defacto synthesis tool for all the open source ASIC flows"
 tags: ["blog"]
 slug: Open source silicon with Yosys
+draft: false
 ---
 
 [Yosys]() is probably best known for providing synthesis for FPGA targets, but it's a very flexible tool capable of a lot more.
