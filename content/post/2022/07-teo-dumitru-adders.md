@@ -19,5 +19,5 @@ Teodor-Dumitru Ene will be presenting his work on adder optimisations, he'll be 
 Please join us:
 
 * Tuesday, 10 May · 17:30 – 18:30 CEST
-* Video call link: [https://meet.google.com/shx-qnnn-jph](https://meet.google.com/shx-qnnn-jph)
+* [Streaming on youtube](https://www.youtube.com/watch?v=P7wjB2DKAIA)
 
