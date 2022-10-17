@@ -1,6 +1,6 @@
 ---
 title: "Introducing the Colorlight 5A-75B board"
-date: 2022-10-03T18:17:00+02:00
+date: 2022-10-16T18:17:00+02:00
 description : "A dive into a popular low-cost ECP5 development board by Chris Lasocki"
 tags: ["blog"]
 image: /static-2022/colorlight_5a75b.jpg
