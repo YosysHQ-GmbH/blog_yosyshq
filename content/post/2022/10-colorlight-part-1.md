@@ -8,6 +8,8 @@ slug: Colorlight Part 1
 draft: false
 ---
 
+_This is the first in a 2 part guest blog post by Chris Lasocki._
+
 It seems that it was an accident - a generic part of a LED display has
 become a low cost FPGA development board. The board in question is the
 Colorlight 5A-75B, which is a so-called receiver card. Featuring a
