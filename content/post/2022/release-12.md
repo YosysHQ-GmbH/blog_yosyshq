@@ -9,8 +9,8 @@ draft: false
 
 The December release of Tabby CAD Suite is now available for download. Notable changes in this version include:
 
-* We have improved support for SystemVerilog `config` elements. You can now have multiple configurations defined, and select which configuration to elaborate with `verific -import &lt;configname>`.
-* We are working on improving the TCL integration in Yosys. There is now an interactive TCL shell mode: use `yosys -C` to enter the TCL shell. You can now also use the following command to get the output of a command returned to TCL without the use of an intermediate file: `set command_output [yosys tee -s result.string &lt;command>]`
+* We have improved support for SystemVerilog `config` elements. You can now have multiple configurations defined, and select which configuration to elaborate with `verific -import <configname>`.
+* We are working on improving the TCL integration in Yosys. There is now an interactive TCL shell mode: use `yosys -C` to enter the TCL shell. You can now also use the following command to get the output of a command returned to TCL without the use of an intermediate file: `set command_output [yosys tee -s result.string <command>]`
 
 # In other YosysHQ news
 
