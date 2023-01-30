@@ -1,4 +1,4 @@
-# 3D raytraced game in custom hardware using fully open source “C to FPGA” toolchain
+# 3D raytraced game using fully open source “C to FPGA” toolchain
 Sphery vs. Shapes is the world's first 3D raytraced game implemented completely as digital logic. This is all made possible by combining the OSS CAD Suite with CFlexHDL and PipelineC.
 
 
@@ -8,7 +8,8 @@ In this article we present a tool flow that takes C++ code describing a raytrace
 Thanks to project Trellis, Yosys and nextpnr can complete an open source synthesis and place and route flow for ECP5 FPGAs. This was the final piece needed to complete our C->Bitstream workflow based on fully open source tools.
 
 ![image](https://user-images.githubusercontent.com/8551129/215363908-0625eb6e-a3db-485a-89e2-10267fca6b7c.png)
-Demo video and full sources: https://github.com/JulianKemmerer/PipelineC-Graphics
+_Demo [video](https://www.youtube.com/watch?v=hn3sr3VMJQU) and full sources: https://github.com/JulianKemmerer/PipelineC-Graphics_
+
 
 ## FPGA as a raytracer
 Interactive ray tracing hardware is novel in FPGA and our work serves as a perfect example that such complex data processing circuits can be developed, tested, and implemented in hardware all from a C language based flow that greatly eases the design process over traditional hardware description languages.
@@ -18,6 +19,7 @@ Ultra-fast compiled C based emulation and C++ based tools like Verilator allow f
 The project generates each video pixel in hard-realtime “chasing the beam”, without a frame buffer and with zero jitter. Medium size Xilinx Artix 7 FPGAs have reached up to 1080p 60FPS (148.5MHz pixel clock). This article describes using an Lattice ECP5 FPGA to reach 480p 60FPS (25MHz pixel clock). Pipelining the entire ray tracer produces a position-to-color latency of a few microseconds at most. 1080p requires about ~400 pipeline stages, 480p requires ~70 stages - in both cases this pipelining is done automatically as part of the tool flow.
 
 The Xilinx Artix 7 FPGA achieves about 70 GFLOP/s using less than 1 watt, thanks to the pipeline with dozens of hardware resources working in parallel. Using that 28nm Xilinx 7 series FPGA, power reduction was calculated to be about 50X less compared with a modern  7nm CPU running heavily vector optimized instructions.
+
 
 ## Workflow
 The workflow allows writing algorithms involving complex types like structures, floating point types and operations on vectors of those, all keeping a clean and familiar syntax.
@@ -37,6 +39,7 @@ Alternatively, the sources can be compiled and run “as C”, as a kind of  ult
 
 From inside the PipelineC-Graphics repository there is one command to go from C file to the final bitstream generation and load your FPGA board:  `make load`. See additional instructions on github.
 
+
 ## Hardware architecture
 The project uses a fully open source board based on a Lattice ECP5 FPGA with 85K LUTs (the OrangeCrab board) plus a PMOD-compatible digital video connector for direct connection to a monitor by adapting 3.3V signals to the required CML levels (Machdyne DDMI), they publish schematics as well. For simplicity, only the positive polarity and ground were connected: it works since the differential levels are met, at least on our test setup. The integrated button on the FPGA board is used to play the game.
 
@@ -53,7 +56,7 @@ To meet 25MHz timing on the Lattice ECP5 FPGA the PipelineC tool created a pixel
 ![image](https://user-images.githubusercontent.com/8551129/215365466-eae48ae2-8c27-408c-919a-190692aa10d4.png)
 
 
-The above pipeline uses operations on custom floating and fixed point types. Float’s use a 14 bit mantissa instead of the typical 23 bits, and fixed point values are represented with a total of 22 bits: for 12 for integer portion, 10 for the fractional bits.
+The above pipeline uses operations on custom floating and fixed point types.
 * Fixed Compare: 1 stage
 * Fixed Addition/Subtraction: 2 stages
 * Fixed Multiplication: 2 stages
@@ -68,6 +71,19 @@ The above pipeline uses operations on custom floating and fixed point types. Flo
 * Float3 Vector Normalize: 7 stages
 * Ray Plane Intersection: 10 stages
 * Ray Sphere Intersection: 22 stages
+
+Float’s use a 14 bit mantissa instead of the typical 23 bits, and fixed point values are represented with a total of 22 bits: 12 for integer portion, 10 for the fractional bits. Those types areprovided by CflexHDL types and can the effects of reduced precision can be readily appreciated with the provided graphical simulation tool, so the optimal size is easy to determine by performing the fast simulations.
+
+![image](https://user-images.githubusercontent.com/8551129/215368154-a9abd122-1308-4c15-b39b-7b19be07082d.png)
+<br>_full precision vs. reduced precision_
+
+Typical times for development/test cycles are as follows:
+|                         | Build command   | Build time|  Speed @1080p |
+|-------------------------|-----------------|-----------|---------------|
+| Fast CPU simulation     | `make sim`      |        1s |     60-86 FPS |
+| Precise CPU simulation  | `make gen`      |        5s |         40FPS |
+| Logic simulation        | `make verilator`|  1min 50s | 50s per frame |
+
 
 ## Software architecture and components
 All software and tools used in this project are Open Source. We integrated the following components:
@@ -93,10 +109,16 @@ Since the PipelineC tool generates VHDL, we needed to convert the final generate
 
 None of these issues were blockers for long. We credit success to the fantastic open source community that provided lots of help in forums and discussions.
 
+
+## Conclusions
+
+We showed a ready-to-use toolchain for hardware design that greatly accelerates development time by using fast simulators at different stages, based on a known programming language syntax. The code can be translated to a logic circuit or run on a off-the-shelf CPU. A example application requiring complex processing was demonstrated by writing a game that implements the usual math operations for raytracing applications, with a clean syntax for math ald all the alorithms. Since we apply an automatically calculated -and possibly long- pipeline, the system is capable of performing very well even compared to powerful modern CPUs, but using smaller and embeddable chips, at low power.
+
+
 ## About the authors
 This work is a result of the tight interactions between Julian Kemmerer (@pipelinec_hdl; fosstodon.org/@pipelinec) and Victor Suarez Rovere (Twitter: [@suarezvictor](https://twitter.com/suarezvictor)) during almost a year. 
 
-**Victor Suarez Rovere** is the author of CflexHDL tool used in this project (parser/generator and math types library) and of the Sphery vs. Shapes game. He’s a software and hardware developer and consultant experienced in Digital Signal Processing, mainly in the medical ﬁeld. Victor was awarded the ﬁrst prize in the Argentine National Technology contest, a gold medal from WIPO as "Best young inventor" and some patents related to a multitouch technology based on tomography techniques.
+**Victor Suarez Rovere** is the author of [CflexHDL](https://github.com/suarezvictor/CflexHDL) tool used in this project (parser/generator and math types library) and of the Sphery vs. Shapes game. He’s a software and hardware developer and consultant experienced in Digital Signal Processing, mainly in the medical ﬁeld. Victor was awarded the ﬁrst prize in the Argentine National Technology contest, a gold medal from WIPO as "Best young inventor" and some patents related to a multitouch technology based on tomography techniques.
 
-**Julian Kemmerer** is the author of the PipelineC tool (C-like HDL w/ auto-pipelining) used in this work. He earned a Masters degree in Computer Engineering from Drexel University in Philadelphia where his work focused on EDA tooling. Julian currently works as an FPGA engineer at an AI focused SDR company called Deepwave Digital. He is a highly experienced digital logic designer looking to increase the usability of FPGAs by moving problems from hardware design into a familiar C language look.
+**Julian Kemmerer** is the author of the [PipelineC](https://github.com/](https://github.com/JulianKemmerer/PipelineC) tool (C-like HDL w/ auto-pipelining) used in this work. He earned a Masters degree in Computer Engineering from Drexel University in Philadelphia where his work focused on EDA tooling. Julian currently works as an FPGA engineer at an AI focused SDR company called Deepwave Digital. He is a highly experienced digital logic designer looking to increase the usability of FPGAs by moving problems from hardware design into a familiar C language look.
 
