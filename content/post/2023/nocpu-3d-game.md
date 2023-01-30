@@ -26,7 +26,7 @@ The workflow allows writing algorithms involving complex types like structures, 
 
 ![image](https://user-images.githubusercontent.com/8551129/215365602-9d1493ef-e8f1-444e-b794-b9ba7a898a08.png)
 
-The source code is first converted by the CflexHDL tool from C++ to C. Then this subset of C can be converted to VHDL by PipelineC. GHDL and Yosys are used to convert the output VHDL into netlists that nextpnr can use.
+The source code is first converted by the [CflexHDL](https://github.com/suarezvictor/CflexHDL) tool from C++ to C. Then this subset of C can be converted to VHDL by [PipelineC](https://github.com/JulianKemmerer/PipelineC) . GHDL and Yosys are used to convert the output VHDL into netlists that nextpnr can use.
 
 
 In addition to simple conversion to VHDL, PipelineC is primarily the mechanism for producing pipelined digital logic from the pure combinatorial logic derived from C code. PipelineC is aware of the FPGA timing characteristics of the specific device (by iterating with nextpnr) and adds pipelining as needed to meet timing. This avoids the tedious and error-prone task of manual pipelining that digital designers are familiar with. The flow reports a preliminary estimate of resources prior to synthesis and the amount of pipeline stages required to implement the user’s functionality.
@@ -88,15 +88,15 @@ Typical times for development/test cycles are as follows:
 ## Software architecture and components
 All software and tools used in this project are Open Source. We integrated the following components:
 
-* PipelineC for C to VHDL, autopipelining (uses pycparser)
-* CflexHDL for C++ parsing, fixed point types and arbitrary width floating point types, and vector of these using operator overloading
-* Clang’s cindex to help in parsing C++
-* Verilator for logic level simulation
-* Simulator based on the SDL libraries (used when compiling the raytracer, or after Verilator C++ generation)
-* Yosys for Verilog parsing and synthesis
-* NextPNR for place and route (project Trellis)
-* GHDL for Yosys plugin for VHDL to Verilog conversion (used by Verilator and for synthesis)
-* LiteX for Orange Crab SoC design, and its video core with serialized digital outputs (DVI)
+* [PipelineC](https://github.com/JulianKemmerer/PipelineC) for C to VHDL, autopipelining (uses [pycparser](https://github.com/eliben/pycparser))
+* [CflexHDL](https://github.com/suarezvictor/CflexHDL) for C++ parsing, fixed point types and arbitrary width floating point types, and vector of these using operator overloading
+* Clang’s [cindex](https://github.com/llvm-mirror/clang/blob/master/bindings/python/clang/cindex.py) to help in parsing C++
+* [Verilator](https://www.veripool.org/verilator/) for logic level simulation
+* Custom [simulator](https://github.com/JulianKemmerer/PipelineC-Graphics/blob/main/simulator_main.cpp) based on the [SDL libraries](https://www.libsdl.org/) (used when compiling the raytracer, or after Verilator C++ generation)
+* YosysHQ's [Yosys](https://yosyshq.net/yosys/) for Verilog parsing and synthesis
+* [NextPNR](https://github.com/gatecat/nextpnr-xilinx) for place and route (project [Trellis](https://github.com/YosysHQ/prjtrellis))
+* [GHDL](http://ghdl.free.fr/) from a [Yosys plugin](https://github.com/ghdl/ghdl-yosys-plugin) for VHDL to Verilog conversion (used by Verilator and for synthesis)
+* [LiteX](https://github.com/enjoy-digital/litex) for Orange Crab SoC design, and its video core with serialized digital outputs (DVI)
 
 ## About Yosys+nextpnr integration
 The first version of the project used a commercial FPGA board and closed-source synthesis tools. After Project Trellis reverse-engineered the ECP5 device there were only a few minor workarounds that were needed to complete the chain of “everything open source” with Yosys and nextpnr.
@@ -105,7 +105,7 @@ Part of PipelineC’s autopipelining iterations involve synthesizing the design 
 
 The second issue we ran into was that in early versions of ECP5 place and route support, nextpnr was not able to pack LUTs+FFs into the shared primitive block as effectively as today. As such, early attempts failed to place and route the design while still having relatively plenty of resources remaining. But after the packing support improved, nextpnr began to produce fully placed and routed designs that could be further iterated on for pipelining. Related: often the nextpnr tool would end up in an infinite loop trying to fix a few remaining overused/unrouted wires - but recent changes seem to have reduced that issue as well.
 
-Since the PipelineC tool generates VHDL, we needed to convert the final generated sources to Verilog (to be used in Verilator simulation and to generate the bitstream). This is done using the GHDL plugin for Yosys and the Yosys write_verilog command. Occasionally Yosys passes like opt and flatten  were needed during the import process in order to avoid spikes in RAM usage.
+Since the PipelineC tool generates VHDL, we needed to convert the final generated sources to [Verilog](https://github.com/JulianKemmerer/PipelineC-Graphics/blob/main/verilog/top-gsd_orangecrab.v) (to be used in Verilator simulation and to generate the bitstream). This is done using the GHDL plugin for Yosys and the Yosys write_verilog command. Occasionally Yosys passes like opt and flatten  were needed during the import process in order to avoid spikes in RAM usage.
 
 None of these issues were blockers for long. We credit success to the fantastic open source community that provided lots of help in forums and discussions.
 
@@ -120,5 +120,5 @@ This work is a result of the tight interactions between Julian Kemmerer (@pipeli
 
 **Victor Suarez Rovere** is the author of [CflexHDL](https://github.com/suarezvictor/CflexHDL) tool used in this project (parser/generator and math types library) and of the Sphery vs. Shapes game. He’s a software and hardware developer and consultant experienced in Digital Signal Processing, mainly in the medical ﬁeld. Victor was awarded the ﬁrst prize in the Argentine National Technology contest, a gold medal from WIPO as "Best young inventor" and some patents related to a multitouch technology based on tomography techniques.
 
-**Julian Kemmerer** is the author of the [PipelineC](https://github.com/](https://github.com/JulianKemmerer/PipelineC) tool (C-like HDL w/ auto-pipelining) used in this work. He earned a Masters degree in Computer Engineering from Drexel University in Philadelphia where his work focused on EDA tooling. Julian currently works as an FPGA engineer at an AI focused SDR company called Deepwave Digital. He is a highly experienced digital logic designer looking to increase the usability of FPGAs by moving problems from hardware design into a familiar C language look.
+**Julian Kemmerer** is the author of the [PipelineC](https://github.com/JulianKemmerer/PipelineC) tool (C-like HDL w/ auto-pipelining) used in this work. He earned a Masters degree in Computer Engineering from Drexel University in Philadelphia where his work focused on EDA tooling. Julian currently works as an FPGA engineer at an AI focused SDR company called Deepwave Digital. He is a highly experienced digital logic designer looking to increase the usability of FPGAs by moving problems from hardware design into a familiar C language look.
 
