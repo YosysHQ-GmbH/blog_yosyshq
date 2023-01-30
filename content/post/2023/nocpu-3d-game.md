@@ -57,22 +57,25 @@ To meet 25MHz timing on the Lattice ECP5 FPGA the PipelineC tool created a pixel
 
 
 The above pipeline uses operations on custom floating and fixed point types.
-* Fixed Compare: 1 stage
-* Fixed Addition/Subtraction: 2 stages
-* Fixed Multiplication: 2 stages
-* Float Compare: 2 stages
-* Float Multiplication: 2 stages
-* Float Addition/Subtraction: 3 stages
-* Float Fast Reciprocal: 3 stages
-* Float Fast Reciprocal Square Root: 3 stages
-* Float Fast Square Root: 3 stages
-* Float Fast Division: 4 stages
-* Float3 Vector Dot Product: 5 stages
-* Float3 Vector Normalize: 7 stages
-* Ray Plane Intersection: 10 stages
-* Ray Sphere Intersection: 22 stages
+|Operation                        | Stages    |
+|---------------------------------|-----------|
+|Fixed Compare                    | 1 stage   |
+|Fixed Addition/Subtraction       | 2 stages  |
+|Fixed Multiplication             | 2 stages  |
+|Float Compare                    | 2 stages  |
+|Float Multiplication             | 2 stages  |
+|Float Addition/Subtraction       | 3 stages  |
+|Float Fast Reciprocal            | 3 stages  |
+|Float Fast Reciprocal Square Root| 3 stages  |
+|Float Fast Square Root           | 3 stages  |
+|Float Fast Division              | 4 stages  |
+|Float 3D Vector Dot Produc       | 5 stages  |
+|Float 3D Vector Normalize        | 7 stages  |
+|Ray Plane Intersection           | 10 stages |
+|Ray Sphere Intersection          | 22 stages |
 
-Float’s use a 14 bit mantissa instead of the typical 23 bits, and fixed point values are represented with a total of 22 bits: 12 for integer portion, 10 for the fractional bits. Those types areprovided by CflexHDL types and can the effects of reduced precision can be readily appreciated with the provided graphical simulation tool, so the optimal size is easy to determine by performing the fast simulations.
+
+Float types use a 14 bit mantissa instead of the typical 23 bits, and fixed point values are represented with a total of 22 bits: 12 for integer portion, 10 for the fractional bits. Those types areprovided by CflexHDL types and can the effects of reduced precision can be readily appreciated with the provided graphical simulation tool, so the optimal size is easy to determine by performing the fast simulations.
 
 ![image](https://user-images.githubusercontent.com/8551129/215368154-a9abd122-1308-4c15-b39b-7b19be07082d.png)
 <br>_full precision vs. reduced precision_
@@ -105,7 +108,7 @@ Part of PipelineC’s autopipelining iterations involve synthesizing the design 
 
 The second issue we ran into was that in early versions of ECP5 place and route support, nextpnr was not able to pack LUTs+FFs into the shared primitive block as effectively as today. As such, early attempts failed to place and route the design while still having relatively plenty of resources remaining. But after the packing support improved, nextpnr began to produce fully placed and routed designs that could be further iterated on for pipelining. Related: often the nextpnr tool would end up in an infinite loop trying to fix a few remaining overused/unrouted wires - but recent changes seem to have reduced that issue as well.
 
-Since the PipelineC tool generates VHDL, we needed to convert the final generated sources to [Verilog](https://github.com/JulianKemmerer/PipelineC-Graphics/blob/main/verilog/top-gsd_orangecrab.v) (to be used in Verilator simulation and to generate the bitstream). This is done using the GHDL plugin for Yosys and the Yosys write_verilog command. Occasionally Yosys passes like opt and flatten  were needed during the import process in order to avoid spikes in RAM usage.
+Since the PipelineC tool generates VHDL, we needed to convert the final generated sources to [a single] Verilog file (https://github.com/JulianKemmerer/PipelineC-Graphics/blob/main/verilog/top-gsd_orangecrab.v) (to be used in Verilator simulation and to generate the bitstream). This is done using the GHDL plugin for Yosys and the Yosys write_verilog command. Occasionally Yosys passes like opt and flatten  were needed during the import process in order to avoid spikes in RAM usage.
 
 None of these issues were blockers for long. We credit success to the fantastic open source community that provided lots of help in forums and discussions.
 
