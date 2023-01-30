@@ -75,7 +75,7 @@ The above pipeline uses operations on custom floating and fixed point types.
 |Ray Sphere Intersection          | 22 stages |
 
 
-Float types use a 14 bit mantissa instead of the typical 23 bits, and fixed point values are represented with a total of 22 bits: 12 for integer portion, 10 for the fractional bits. Those types areprovided by CflexHDL types and can the effects of reduced precision can be readily appreciated with the provided graphical simulation tool, so the optimal size is easy to determine by performing the fast simulations.
+Float types use a 14 bit mantissa instead of the typical 23 bits, and fixed point values are represented with a total of 22 bits: 12 for integer portion, 10 for the fractional bits. Those types are provided by CflexHDL types and can the effects of reduced precision can be readily appreciated with the provided graphical simulation tool, so the optimal size is easy to determine by performing the fast simulations.
 
 ![image](https://user-images.githubusercontent.com/8551129/215368154-a9abd122-1308-4c15-b39b-7b19be07082d.png)
 <br>_Full precision vs. reduced precision in simulator window_
@@ -101,7 +101,7 @@ All software and tools used in this project are Open Source. We integrated the f
 * [GHDL](http://ghdl.free.fr/) from a [Yosys plugin](https://github.com/ghdl/ghdl-yosys-plugin) for VHDL to Verilog conversion (used by Verilator and for synthesis)
 * [LiteX](https://github.com/enjoy-digital/litex) for Orange Crab SoC design, and its video core with serialized digital outputs (DVI)
 
-## About Yosys+nextpnr integration
+## About OSS CAD Suite Integration
 The first version of the project used a commercial FPGA board and closed-source synthesis tools. After Project Trellis reverse-engineered the ECP5 device there were only a few minor workarounds that were needed to complete the chain of “everything open source” with Yosys and nextpnr.
 
 Part of PipelineC’s autopipelining iterations involve synthesizing the design purely as combinatorial logic (pre-pipelining). The share pass that Yosys uses by default for synth_ecp5 does not handle the massive combinatorial network that defines the ray tracer design very well. RAM usage (typically ~8GB max) quickly jumps past the 16GB we had on our workstations. Disabling the share pass required editing the Yosys source code to remove the specific ECP5 run step.
@@ -115,7 +115,7 @@ None of these issues were blockers for long. We credit success to the fantastic 
 
 ## Conclusions
 
-We showed a ready-to-use toolchain for hardware design that greatly accelerates development time by using fast simulators at different stages, based on a known programming language syntax. The code can be translated to a logic circuit or run on a off-the-shelf CPU. A example application requiring complex processing was demonstrated by writing a game that implements the usual math operations for raytracing applications, with a clean syntax for math ald all the alorithms. Since we apply an automatically calculated -and possibly long- pipeline, the system is capable of performing very well even compared to powerful modern CPUs, but using smaller and embeddable chips, at low power.
+We showed a ready-to-use toolchain for hardware design that greatly accelerates development time by using fast simulators at different stages, based on a known programming language syntax. The code can be translated to a logic circuit or run on a off-the-shelf CPU. A example application requiring complex processing was demonstrated by writing a game that implements the usual math operations for raytracing applications, with a clean syntax for math ald all the algorithms. Since we apply an automatically calculated -and possibly long- pipeline, the system is capable of performing very well even compared to powerful modern CPUs, but using smaller and embeddable chips, at low power.
 
 
 ## About the authors
