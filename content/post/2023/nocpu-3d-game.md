@@ -22,7 +22,7 @@ The Xilinx Artix 7 FPGA achieves about 70 GFLOP/s using less than 1 watt, thanks
 ## Workflow
 The workflow allows writing algorithms involving complex types like structures, floating point types and operations on vectors of those, all keeping a clean and familiar syntax.
 
-[SNIPPET IMAGE]
+![image](https://user-images.githubusercontent.com/8551129/215365602-9d1493ef-e8f1-444e-b794-b9ba7a898a08.png)
 
 The source code is first converted by the CflexHDL tool from C++ to C. Then this subset of C can be converted to VHDL by PipelineC. GHDL and Yosys are used to convert the output VHDL into netlists that nextpnr can use.
 
@@ -33,24 +33,24 @@ To produce a final bitstream GHDL+Yosys are used to generate a flattened single 
 
 Alternatively, the sources can be compiled and run “as C”, as a kind of  ultra-fast emulation/simulation (the game can be played in FullHD at 60FPS during debug on PC), or the Verilog sources can be processed by Verilator and graphically simulated by another tool we provided.
 
-[WORKFLOW IMAGE]
+![image](https://user-images.githubusercontent.com/8551129/215365530-4c922851-9ad5-431d-b85e-fa4d94d0a197.png)
 
-From inside the PipelineC-Graphics repository there is one command to go from C file to the final bitstream generation and load your FPGA board:  make load. See additional instructions on github.
+From inside the PipelineC-Graphics repository there is one command to go from C file to the final bitstream generation and load your FPGA board:  `make load`. See additional instructions on github.
 
 ## Hardware architecture
 The project uses a fully open source board based on a Lattice ECP5 FPGA with 85K LUTs (the OrangeCrab board) plus a PMOD-compatible digital video connector for direct connection to a monitor by adapting 3.3V signals to the required CML levels (Machdyne DDMI), they publish schematics as well. For simplicity, only the positive polarity and ground were connected: it works since the differential levels are met, at least on our test setup. The integrated button on the FPGA board is used to play the game.
 
-[BOARD IMAGE]
+![image](https://user-images.githubusercontent.com/8551129/215365509-20f5e573-07dc-49b0-bcbc-73465a991a50.png)
 
 This setup allowed 640x480 resolution (25MHz clock) instead of 1920x1080 (148.5MHz clock) as achieved with the original setup using a Xilinx 7 series FPGA device.
 
 The FPGA design consists of two main blocks: a state machine computing frame-by-frame animation and a long pixel rendering pipeline.
 
-[PIPELINE DIAGRAM 1]
+![image](https://user-images.githubusercontent.com/8551129/215365576-37c2fbdb-069d-4d61-9b17-71be7b165314.png)
 
 To meet 25MHz timing on the Lattice ECP5 FPGA the PipelineC tool created a pixel rendering pipeline of approximately ~70 stages. Below is a visual breakdown of how many stages each major function takes and roughly where/when in the pipeline it occurs:
 
-[PIPELINE DIAGRAM 2]
+![image](https://user-images.githubusercontent.com/8551129/215365466-eae48ae2-8c27-408c-919a-190692aa10d4.png)
 
 
 The above pipeline uses operations on custom floating and fixed point types. Float’s use a 14 bit mantissa instead of the typical 23 bits, and fixed point values are represented with a total of 22 bits: for 12 for integer portion, 10 for the fractional bits.
