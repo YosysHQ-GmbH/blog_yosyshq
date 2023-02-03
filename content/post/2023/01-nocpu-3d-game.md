@@ -69,7 +69,7 @@ The above pipeline uses operations on custom floating and fixed point types.
 |Float Fast Reciprocal Square Root| 3 stages  |
 |Float Fast Square Root           | 3 stages  |
 |Float Fast Division              | 4 stages  |
-|Float 3D Vector Dot Produc       | 5 stages  |
+|Float 3D Vector Dot Product      | 5 stages  |
 |Float 3D Vector Normalize        | 7 stages  |
 |Ray Plane Intersection           | 10 stages |
 |Ray Sphere Intersection          | 22 stages |
