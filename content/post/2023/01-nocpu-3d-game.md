@@ -77,8 +77,8 @@ The above pipeline uses operations on custom floating and fixed point types.
 
 Float types use a 14 bit mantissa instead of the typical 23 bits, and fixed point values are represented with a total of 22 bits: 12 for integer portion, 10 for the fractional bits. Those types are provided by CflexHDL types and can the effects of reduced precision can be readily appreciated with the provided graphical simulation tool, so the optimal size is easy to determine by performing the fast simulations.
 
-![image](https://user-images.githubusercontent.com/8551129/215368154-a9abd122-1308-4c15-b39b-7b19be07082d.png)
-<br>_Full precision vs. reduced precision in simulator window_
+![image](https://user-images.githubusercontent.com/8551129/215368154-a9abd122-1308-4c15-b39b-7b19be07082d.png)  
+_Full precision vs. reduced precision in simulator window_
 
 Typical times for development/test cycles are as follows:
 |                         | Build command   | Build time|  Speed @1080p |
