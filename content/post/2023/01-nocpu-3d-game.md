@@ -1,3 +1,15 @@
+---
+title: "3D raytraced game with open source C to FPGA toolchain"
+date: 2023-02-03T12:00:00+02:00
+description : "A look at CFlexHDL and PipelineC"
+tags: ["blog"]
+image: /static-2023/sphery.png
+slug: 3D raytracing
+draft: false
+---
+
+_This guest post is by Victor Suarez Rovere._
+
 # 3D raytraced game using fully open source “C to FPGA” toolchain
 Sphery vs. Shapes is the world's first 3D raytraced game implemented completely as digital logic. This is all made possible by combining the OSS CAD Suite with CFlexHDL and PipelineC.
 
@@ -115,7 +127,7 @@ None of these issues were blockers for long. We credit success to the fantastic 
 
 ## Conclusions
 
-We showed a ready-to-use toolchain for hardware design that greatly accelerates development time by using fast simulators at different stages, based on a known programming language syntax. The code can be translated to a logic circuit or run on a off-the-shelf CPU. A example application requiring complex processing was demonstrated by writing a game that implements the usual math operations for raytracing applications, with a clean syntax for math ald all the algorithms. Since we apply an automatically calculated -and possibly long- pipeline, the system is capable of performing very well even compared to powerful modern CPUs, but using smaller and embeddable chips, at low power.
+We showed a ready-to-use toolchain for hardware design that greatly accelerates development time by using fast simulators at different stages, based on a known programming language syntax. The code can be translated to a logic circuit or run on a off-the-shelf CPU. A example application requiring complex processing was demonstrated by writing a game that implements the usual math operations for raytracing applications, with a clean syntax for math and all the algorithms. Since we apply an automatically calculated -and possibly long- pipeline, the system is capable of performing very well even compared to powerful modern CPUs, but using smaller and embeddable chips, at low power.
 
 
 ## About the authors
