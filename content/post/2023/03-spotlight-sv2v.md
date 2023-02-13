@@ -9,7 +9,7 @@ tags: ["community spotlight"]
 
 Welcome to another [community spotlight](/tags/community-spotlight/) article where we shine a light on open source EDA projects. If you want to [submit a project, please do so here](https://docs.google.com/forms/d/e/1FAIpQLSdIEgu6FJZam0-V3PMTjw-eDebJdg_JuIlN4MkLNDr4vs-a5A/viewform?usp=sf_link).
 
-sv2v by converts SystemVerilog (IEEE 1800-2017) to Verilog (IEEE 1364-2005), with an emphasis on supporting synthesizable language constructs.
+sv2v converts SystemVerilog (IEEE 1800-2017) to Verilog (IEEE 1364-2005), with an emphasis on supporting synthesizable language constructs.
 
 # Zachary Snow's Bio
 
