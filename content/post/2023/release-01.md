@@ -1,5 +1,5 @@
 ---
-title: "Tabby CAD Suite version 20220104 released!"
+title: "Tabby CAD Suite version 20230104 released!"
 date: 2023-01-04
 description : ""
 image: /static-2023/YOS_horiz.png
@@ -7,7 +7,7 @@ tags: ["release notes"]
 draft: false
 ---
 
-Subject: Tabby CAD Suite version 20230104 released!
+Tabby CAD Suite version 20230104 released!
 
 The January release of Tabby CAD Suite is now available for download. With the holidays there have been only a few changes, of note:
 
