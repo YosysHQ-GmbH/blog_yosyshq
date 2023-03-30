@@ -16,10 +16,10 @@ The FPGA toolchain
 
 The FPGA workflow consists of a few more steps compared to the usual software toolchain workflow. 
 
-The Verilog source code, which is a description of the logic that makes up the FPGA design, first needs to be synthesized.
+The Verilog source, which is a description of the logic that makes up the FPGA design, first needs to be synthesized.
 The synthesis process scans through all the source files and libraries to find out the hierarchy of the modules, starting with the specified top module.
 The result of this process is a low level logical representation of all the abstract components that will make up the final design.
-In Yosys, this step is done by the `yosys` program, and results in a JSON file.
+In the FPGA flow, this step is done by the `yosys` program, and results in a JSON file.
 
 The next step in the toolchain is place-and-route.
 This is where the process becomes specific to the target FPGA family, because it takes the abstract components and maps it to physical parts that make up the FPGA.
@@ -41,7 +41,7 @@ We will use `openocd` to communicate with our JTAG adapter and upload the SVF fi
 Hello, blink!
 -------------
 
-For our journey into getting the board to blink, we will use the following Verilog code.
+For our journey into getting the board to blink, we will use the following Verilog.
 It's a simple clock divisor module whose output is connected to an IO pin on the FPGA that is connected to the onboard LED.
 
     module top(input clk_i, output led_o);
@@ -78,18 +78,18 @@ It's a simple clock divisor module whose output is connected to an IO pin on the
     endmodule
 
 
-This piece of verilog will take the clock input from the onboard oscillator, divide it by 500 thousand and output the divided clock to output led_o.
+This piece of Verilog will take the clock input from the onboard oscillator, divide it by 500 thousand and output the divided clock to output led_o.
 
 I've called the file `blink.v`. Now we need to synthesize it using `yosys`:
 
     yosys -p "synth_ecp5 -top top -json blink.json" blink.v
 
 It is important to specify the top module by name using the `-top <name>` option.
-Otherwise yosys may pick the wrong module as the top and later cause an error due to uncoinstrained IOs.
+Otherwise yosys may pick the wrong module as the top and later cause an error due to unconstrained IOs.
 
 The next step is to assign the logic IOs from the verilog modules to physical pins on the FPGA.
 This is necesary for the Place and Route step and is done by a constraints file.
-Looking up q3k's repository on the 5A-75B board we can find out that the clock is connected to FPGA pin P6, and the onboard led is connected to T6.
+Looking up [q3k's repository](https://github.com/q3k/chubby75/blob/master/5a-75b/hardware_V8.0.md) on the 5A-75B board we can find out that the clock is connected to FPGA pin P6, and the onboard led is connected to T6.
 Here is how the LPF file looks like. I saved it as blink.lpf:
 
     LOCATE COMP "clk_i" SITE "P6";
@@ -112,7 +112,7 @@ With the SVF file it's time to program the bitstream into the FPGA. Connect it t
 
     openocd -f colorlight_5a75b.cfg -c "svf -quiet -progress blink.svf; exit"
 
-The file colorlight_5a75b.cfg has my openocd configuration. Here's how it looks like:
+The file colorlight_5a75b.cfg contains my openocd configuration:
 
     source [find interface/jlink.cfg]
     adapter_khz 500
@@ -129,4 +129,4 @@ The file colorlight_5a75b.cfg has my openocd configuration. Here's how it looks 
 
 the `jtag newtap ...` line defines a new Test Access Port that corresponds to the FPGA's TAP. The first line configures openocd to use a JLink as the adapter. If you have a different adapter, then modify this file to your needs.
 
-The example project, along with a Makefile is [available on github](https://github.com/polprog/colorlight_hello)
+The example project, along with a Makefile is [available on GitHub](https://github.com/polprog/colorlight_hello)
