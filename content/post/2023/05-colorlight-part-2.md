@@ -8,8 +8,9 @@ slug: Colorlight Part 2
 draft: false
 ---
 
-Welcome to the second part of the Colorlight 5A-75B article.
-In this text I will show you how to set up and synthesize your first Verilog program on the ECP5 FPGA using the Yosys suite.
+_Welcome to the second part of the Colorlight 5A-75B article. You can find the [first part here](/p/colorlight-part-1/)._
+
+In this blogpost I will show you how to set up, synthesize and program your first Verilog program on the ECP5 FPGA using the Yosys suite.
 
 The FPGA toolchain
 ------------------
@@ -130,3 +131,12 @@ The file colorlight_5a75b.cfg contains my openocd configuration:
 the `jtag newtap ...` line defines a new Test Access Port that corresponds to the FPGA's TAP. The first line configures openocd to use a JLink as the adapter. If you have a different adapter, then modify this file to your needs.
 
 The example project, along with a Makefile is [available on GitHub](https://github.com/polprog/colorlight_hello)
+
+About the author
+----------------
+
+Chris "polprog" Lasocki ([@polprogpl](https://twitter.com/polprogpl))
+is a long time electronics hacker and an aspiring physicist. FPGAs are
+one of his hobbies and he is currently writing a thesis in that field.
+His other interests include laser physics as well as embedded programming
+projects. He runs a blog at [polprog.net](https://polprog.net).

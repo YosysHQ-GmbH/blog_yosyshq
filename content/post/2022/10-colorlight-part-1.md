@@ -8,7 +8,8 @@ slug: Colorlight Part 1
 draft: false
 ---
 
-_This guest post is the first in a two part series by Chris Lasocki._
+_This guest post is the first in a two part series by Chris Lasocki. 
+Part 2 is [now available here](/p/colorlight-part-2/)._
 
 It seems that it was an accident - a generic part of a LED display has
 become a low cost FPGA development board. The board in question is the
