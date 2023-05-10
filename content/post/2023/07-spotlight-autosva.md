@@ -11,7 +11,7 @@ Welcome to another [community spotlight](/tags/community-spotlight/) article whe
 
 AutoSVA makes Formal Property Verification (FPV) more accesible for hardware designers.
 
-# Zachary Snow's Bio
+# Marcelo Vera's Bio
 
 ![Marcelo Vera](/static-2023/spotlight/marcelo.jpeg)
 
