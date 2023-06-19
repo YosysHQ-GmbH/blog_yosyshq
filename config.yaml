@@ -108,6 +108,12 @@ menu:
           weight: -90
           pre: user
 
+        - identifier: newsletter
+          name: Newsletter
+          url: newsletter
+          weight: -80
+          pre: user
+
         - identifier: archives
           name: Archives
           url: archives
