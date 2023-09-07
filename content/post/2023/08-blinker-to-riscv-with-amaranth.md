@@ -1,7 +1,7 @@
 ---
 title: "How I went from blinker to RSIC-V in 3 months"
 date: 2023-05-15T12:00:00+02:00
-description : "Bruno Levi's FPGA tutorial through Amaranth glasses"
+description : "Bruno Levy's FPGA tutorial through Amaranth glasses"
 tags: ["blog"]
 image: /static-2023/blinker-to-riscv.jpg
 slug: blinker to RISC-V
@@ -57,4 +57,4 @@ Still, some endurance is needed to pull through, when things don't work as expec
 Despite these challenges, my plan is to continue with the tutorial and get the SPI interface working. In the meantime, I'm also working on getting support for the [free Gowin toolchain](https://github.com/YosysHQ/apicula) (project apicula) into Amaranth's build system. Looking ahead, I'm excited to apply the things I've learned from (not strictly) following Bruno's tutorial to other projects. I'd also encourage anyone interested in these concepts to take their favorite HDL and port the tutorial. For me, this has been a great experience, and I'm certain that with a growing user base, FPGA design will become even more accessible than it is today!
 
 ## About the author
-**Dr. Bastian Löher** (Twitter: [@y\_\_](https://twitter.com/y__), Mastodon: [@bl0x@mastodon.social](https://mastodon.social/@bl0x@mastodon.social)) ported [Bruno Levi's FPGA tutorial](https://github.com/BrunoLevy/learn-fpga/blob/master/FemtoRV/TUTORIALS/FROM_BLINKER_TO_RISCV/README.md) to [Amaranth HDL](https://github.com/bl0x/learn-fpga-amaranth). He is a physicist and control systems engineer for nuclear physics experiments with heavy ion beams. He designs efficient data acquisition software for large heterogeneous particle detection systems and builds mobile radiation sensors for fun.
+**Dr. Bastian Löher** (Twitter: [@y\_\_](https://twitter.com/y__), Mastodon: [@bl0x@mastodon.social](https://mastodon.social/@bl0x@mastodon.social)) ported [Bruno Levy's FPGA tutorial](https://github.com/BrunoLevy/learn-fpga/blob/master/FemtoRV/TUTORIALS/FROM_BLINKER_TO_RISCV/README.md) to [Amaranth HDL](https://github.com/bl0x/learn-fpga-amaranth). He is a physicist and control systems engineer for nuclear physics experiments with heavy ion beams. He designs efficient data acquisition software for large heterogeneous particle detection systems and builds mobile radiation sensors for fun.
