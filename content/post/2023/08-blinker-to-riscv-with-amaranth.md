@@ -1,5 +1,5 @@
 ---
-title: "How I went from blinker to RSIC-V in 3 months"
+title: "How I went from blinker to RISC-V in 3 months"
 date: 2023-05-15T12:00:00+02:00
 description : "Bruno Levy's FPGA tutorial through Amaranth glasses"
 tags: ["blog"]
@@ -10,7 +10,7 @@ draft: false
 
 _This guest post is by Bastian Löher._
 
-# How I went from blinker to RSIC-V in 3 months
+# How I went from blinker to RISC-V in 3 months
 How does one get started with programming [FPGAs](https://en.wikipedia.org/wiki/Field-programmable_gate_array) (field-programmable gate arrays)? Where does one even begin? Also, if you've ever wondered how a [CPU](https://en.wikipedia.org/wiki/Central_processing_unit) works and how you can build your own, keep reading!
 
 *TL;DR:* Getting into FPGA programming nowadays isn't hard anymore. Get a [cheap board](https://www.joelw.id.au/FPGA/CheapFPGADevelopmentBoards) with at least one LED that is supported by an open toolchain,
