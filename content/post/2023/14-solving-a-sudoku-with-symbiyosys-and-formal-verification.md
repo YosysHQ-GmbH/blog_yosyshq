@@ -1,58 +1,40 @@
 ---
-title: "Solving a Sudoku with SymbiYosys and Formal Verification"
+title: "Solving a Sudoku with SBY and Formal Verification"
 date: 2023-10-31T12:00:00+02:00
-description : Repurposing SymbiYosys to solve a Sudoku"
+description : Repurposing SBY to solve a Sudoku"
 tags: ["blog"]
-image: /static-2023/blinker-to-riscv.jpg
-slug: solving-sudoku-with-symbiyosys
+image: /static-2023/cover_sby_sudoku.png
+slug: solving-sudoku-with-SBY
 draft: true
 ---
 
 _This guest post is by Theophile Loubiere._
 
-# Solving a Sudoku with SymbiYosys and Formal Verification
+# Solving a Sudoku with SBY and Formal Verification
 
-Recently, I began using SymbiYosys to formally verify my designs. You can check out my first attempt on my blog [learn-fpga-easily](https://learn-fpga-easily.com/trying-formal-verification-with-symbiyosys-and-chisel/). Formal Verification helps ensure that certain properties of your design always remain true, such as:
+Recently, I began using SBY to formally verify my designs. You can check out my first attempt on my blog [learn-fpga-easily](https://learn-fpga-easily.com/trying-formal-verification-with-SBY-and-chisel/). Formal Verification helps ensure that certain properties of your design always remain true, such as:
 
 - **Bus arbitration**: "Only one master can receive the bus grant at any given time."
 - **Overflow and Underflow**: "The FIFO buffer will never overflow or underflow."
 - **State Machine Reachability**: "The state machine can never transition from state_1 to state_3."
 
-These kinds of properties would normally require an extensive functional testbench for coverage. However, with formal verification and SymbiYosys, they can be easily addressed with just a few assertions and assumptions.
+These kinds of properties would normally require an extensive functional testbench for coverage. However, with formal verification and SBY, they can be easily addressed with just a few assertions and assumptions.
 
-Given my newfound knowledge, it seemed completely natural that after embarrassingly failing to solve a Sudoku puzzle with my grandfather – a hit to my pride – I decided to hijack SymbiYosys to solve a Sudoku.
+Given my newfound knowledge, it seemed completely natural that after embarrassingly failing to solve a Sudoku puzzle with my grandfather – a hit to my pride – I decided to repurpose the use of SBY just to figure out a Sudoku solution.
 
-Today, I am excited to share with you my overkill attempt to solve a simple Sudoku puzzle with SymbiYosys and Formal Verification.
+Today, I am excited to share with you my overkill attempt to solve a simple Sudoku puzzle with SBY and Formal Verification.
 
 ## Modeling the Sudoku
 
 In Verilog, we can represent a Sudoku grid straightforwardly: a two-dimensional register encompassing 9 rows and 9 columns, where each cell occupies 4 bits:
 
 ``` verilog
-reg [3:0] sudoku_grid[8:0][8:0];
-```
-
-Given that Verilog lacks support for multi-dimensional module ports, it's necessary to flatten them. Additionally, to prevent our internal register from getting discarded during synthesis, we must link the two-dimensional register to the flattened output port.
-
-Below is the described module:
-```verilog
 module sudoku (
 	input clk,
-	output reg [323:0] output_grid_flat // 9x9 array of 4 bits for output flattened to 324 bits
 );
 
 // Internal 9x9 grid to make operations more intuitive
-reg [3:0] sudoku_grid[8:0][8:0];
-
-// Mapping sudoku grid to an output
-always @(posedge clk) begin
-	integer i, j;
-	for(i=0; i<9; i=i+1) begin
-		for(j=0; j<9; j=j+1) begin
-			output_grid_flat[i*9*4+j*4+:4] = sudoku_grid[i][j];
-		end
-	end
-end
+(* keep *) reg [3:0] sudoku_grid[8:0][8:0];
 
 `ifdef FORMAL
 // see next section
@@ -60,6 +42,8 @@ end
 
 endmodule
 ```
+
+Using the (* keep *) attribute ensures our register won't be discarded during synthesis, even if it isn't used anywhere.
 
 And that's it! Now, let's dive into the interesting part: Formal Verification.
 
@@ -198,15 +182,14 @@ assume(sudoku_grid[8][8]==8);
 end
 ```
 
-### Hijacking the use of the SymbiYosys
+### Using SBY to solve the Grid
 
-With the game rules handed over to our solver, we want it to return the solution now. Here lies our ingenious twist in using the tool!
+With the game rules handed over to our solver, we want it to return the solution now.
 
-As highlighted before, in a correctly solved Sudoku, every row, column, or box's digit sum is 45. If we were to declare: "assert(sum_line=6'd45);" the solver would merely confirm with a "yes"... and leave it at that.
+As highlighted before, in a correctly solved Sudoku, every row, column, or box's digit sum is 45. We simply need to request an example where this property holds true. And since there's only one such example, it elegantly unfolds as our desired Sudoku solution.
 
-Yet, our goal is the solution. So, we'll assert the contrary. We'll claim the sum of the first row's digits can't possibly be 45. In response, the solver produces a counter-proof where the first row's digits indeed sum up to 45. Given it has to respect the Sudoku rules, this counter-proof elegantly unfolds as our desired Sudoku solution.
 ```verilog
-// Assert that sum cannot be equal to 45
+// Ask SBY to explicitly cover the (only) case where sum=45s
 wire [5:0] sum;
 assign sum = sudoku_grid[0][0] +
 			 sudoku_grid[0][1] +
@@ -219,7 +202,7 @@ assign sum = sudoku_grid[0][0] +
 			 sudoku_grid[0][8];
 
 always @(*) begin
-	assert(sum!=6'd45);
+	cover(sum==6'd45);
 end
 `endif FORMAL
 endmodule
@@ -227,13 +210,12 @@ endmodule
 
 ## Let's run the verification
 
-To install SymbiYosys and all the required formal solvers, I recommend following the straightforward installation process provided by [oss-cad-suite](https://github.com/YosysHQ/oss-cad-suite-build).
+To install SBY and all the required formal solvers, I recommend following the straightforward installation process provided by [oss-cad-suite](https://github.com/YosysHQ/oss-cad-suite-build).
 
-To execute the verification, we'll need our sudoku.v file and a SymbiYosys configuration file named sudoku.sby with the content below:
+To execute the verification, we'll need our sudoku.v file and a SBY configuration file named sudoku.sby with the content below:
 ```
 [options]
-mode prove
-depth 20
+mode cover
 
 [engines]
 smtbmc
@@ -253,10 +235,10 @@ sby -f sudoku.sby
 
 And as you can see... it fails... WAIT! WHAT?
 
-![image](/static-2023/assumption_unsatisfiable.png)
-_SymbiYosys log_
+![image](/static-2023/unreached_cover_statement.png)
+_SBY log_
 
-"Assumptions are unsatisfiable." What does that mean?
+"Unreached cover statement..." What does that mean?
 
 - The line assumptions are correct.
 - The row assumptions are correct.
@@ -270,15 +252,15 @@ assume(sudoku_grid[1][4]==3); // correct
 
 When I visited my grandfather, I handed him the original and copied it onto a paper to solve it myself... I made a copying error(deep breath)... At least we stumble upon a unexpected feature : we now know how to identify an unfeasible grid !  
 
-Now, having corrected my error... it still fails, but as expected: SymbiYosys notifies me that my assertion didn't hold! And that there's proof! Which is precisely what I was aiming for.
+Now, after correcting my mistake, it works as expected: SBY generates the solution for me!
 
-Here's the solution viewed through gtkwave (SymbiYosys give you the path of the vcd file):
+Here's the solution viewed through gtkwave (SBY give you the path of the vcd file):
 ![image](/static-2023/unreadable_solution.png)
 _GTKWave screenshot_
 
 Hmm... that's not very user-friendly to interpret.
 
-Let's take the futility of this exercise a step further and craft a Python script to visualize the solution. I've employed the pyDigitalWaveTools Python library to convert my VCD file into JSON format and have requested ChatGPT to create a script that reads the JSON and displays the solution in my terminal. All the sources can be accessed my [github page](https://github.com/LearnFpgaEasily/Solving-Sudoku-with-SymbiYosys).
+Let's take the futility of this exercise a step further and craft a Python script to visualize the solution. I've employed the pyDigitalWaveTools Python library to convert my VCD file into JSON format and have requested ChatGPT to create a script that reads the JSON and displays the solution in my terminal. All the sources can be accessed my [github page](https://github.com/LearnFpgaEasily/Solving-Sudoku-with-SBY).
 
 Now, the moment we've all been waiting for - the solution:
 
@@ -300,6 +282,6 @@ Now, the moment we've all been waiting for - the solution:
 
 Let's wrap this up. First off, if you're ever stuck on that pesky Sudoku during a lazy Sunday afternoon, you now know there’s a... let's call it an “alternative” way to crack it. And check it is actually feasible.
 
-Now, on the real note: diving into techy stuff using simple problems we already know? It's golden! It’s like trying to learn a new dance step with a song you already love. You get the hang of it faster and, more importantly, it's fun. Playing around with SymbiYosys in this wild way just shows how cool and flexible these tools can be. 
+Now, on the real note: diving into techy stuff using simple problems we already know? It's golden! It’s like trying to learn a new dance step with a song you already love. You get the hang of it faster and, more importantly, it's fun. Playing around with SBY in this wild way just shows how cool and flexible these tools can be. 
 
 Big Thanks to YosysHQ for letting me write on their blog. And to you, dear reader, remember: mix things up, try the unexpected, and most importantly, have some fun while you’re at it. Till next time!
