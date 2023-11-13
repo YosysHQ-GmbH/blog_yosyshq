@@ -1,11 +1,10 @@
 ---
 title: "Solving a Sudoku with SBY and Formal Verification"
-date: 2023-10-31T12:00:00+02:00
+date: 2023-11-06T12:00:00+02:00
 description : Repurposing SBY to solve a Sudoku"
 tags: ["blog"]
 image: /static-2023/cover_sby_sudoku.png
 slug: solving-sudoku-with-SBY
-draft: true
 ---
 
 _This guest post is by Theophile Loubiere._
