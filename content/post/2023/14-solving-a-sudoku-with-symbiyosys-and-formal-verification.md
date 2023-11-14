@@ -11,7 +11,7 @@ _This guest post is by Theophile Loubiere._
 
 # Solving a Sudoku with SBY and Formal Verification
 
-Recently, I began using SBY to formally verify my designs. You can check out my first attempt on my blog [learn-fpga-easily](https://learn-fpga-easily.com/trying-formal-verification-with-SBY-and-chisel/). Formal Verification helps ensure that certain properties of your design always remain true, such as:
+Recently, I began using SBY to formally verify my designs. You can check out my first attempt on my blog [learn-fpga-easily](https://learn-fpga-easily.com/trying-formal-verification-with-symbiyosys-and-chisel/). Formal Verification helps ensure that certain properties of your design always remain true, such as:
 
 - **Bus arbitration**: "Only one master can receive the bus grant at any given time."
 - **Overflow and Underflow**: "The FIFO buffer will never overflow or underflow."
