@@ -259,7 +259,7 @@ _GTKWave screenshot_
 
 Hmm... that's not very user-friendly to interpret.
 
-Let's take the futility of this exercise a step further and craft a Python script to visualize the solution. I've employed the pyDigitalWaveTools Python library to convert my VCD file into JSON format and have requested ChatGPT to create a script that reads the JSON and displays the solution in my terminal. All the sources can be accessed my [github page](https://github.com/LearnFpgaEasily/Solving-Sudoku-with-SBY).
+Let's take the futility of this exercise a step further and craft a Python script to visualize the solution. I've employed the pyDigitalWaveTools Python library to convert my VCD file into JSON format and have requested ChatGPT to create a script that reads the JSON and displays the solution in my terminal. All the sources can be accessed my [github page](https://github.com/LearnFpgaEasily/Solving-Sudoku-with-symbiyosys).
 
 Now, the moment we've all been waiting for - the solution:
 
