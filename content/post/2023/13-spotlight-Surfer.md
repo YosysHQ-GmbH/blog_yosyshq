@@ -10,7 +10,7 @@ tags: ["community spotlight"]
 Welcome to another [community spotlight](/tags/community-spotlight/) article where we shine a light on open source EDA projects. If you want to [submit a project, please do so here](https://docs.google.com/forms/d/e/1FAIpQLSdIEgu6FJZam0-V3PMTjw-eDebJdg_JuIlN4MkLNDr4vs-a5A/viewform?usp=sf_link).
 
 Surfer is a new waveform viewer with a focus on extensibility and a snappy
-(optionally keyboard driven UI). It runs both natively and in web-assembly, so
+(optionally keyboard driven) UI. It runs both natively and in web-assembly, so
 you can try it out right here in the browser at
 [https://app.surfer-project.org](https://app.surfer-project.org/?load_url=https://app.surfer-project.org/picorv32.vcd&startup_commands=show_quick_start;module_add%20testbench.top).
 The project is written in rust and while it is still in its early stages, it is
