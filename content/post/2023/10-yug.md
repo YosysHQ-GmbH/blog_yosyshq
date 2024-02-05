@@ -1,6 +1,6 @@
 ---
 title: "Yosys User's Group"
-date: 2023-12-11T16:52:39+02:00
+date: 2024-02-04:52:39+02:00
 tags: ["yug"]
 image: /static-2023/yug.jpg
 draft: false
@@ -13,6 +13,10 @@ If you'd like to join, then please [sign up to the newsletter](/newsletter) or f
 * [linkedin](https://www.linkedin.com/company/yosyshq),
 * [mastodon](https://fosstodon.org/@yosyshq) or
 * [twitter](https://twitter.com/YosysHQ).
+
+## YUG 5 - SystemVerilog with Pulp’s SVase
+
+* An introduction to [Bender](https://github.com/pulp-platform/bender), [Morty](https://github.com/pulp-platform/morty) and [SVase](https://github.com/pulp-platform/svase)
 
 ## YUG 4 - all the plugins!
 
