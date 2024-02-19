@@ -1,6 +1,6 @@
 ---
 title: "Yosys User's Group"
-date: 2024-02-04:52:39+02:00
+date: 2024-02-04T12:00:00-0000
 tags: ["yug"]
 image: /static-2023/yug.jpg
 draft: false
