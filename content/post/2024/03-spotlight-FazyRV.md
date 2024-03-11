@@ -20,7 +20,7 @@ I am a Ph.D. student at [Graz University of Technology](https://www.tugraz.at/ho
 
 # What motivated you to make FazyRV?
 
-The fascination of getting the most out of a constrained environment and using even small FPGAs for "big" projects -- it is like the digital design equivalent of _Can it run Doom?_. I became captivated by SERV and how small a system-on-chip design can be. However, there was a gap between the 1-bit bit-serial SERV and prevalent 32-bit cores.
+The fascination of getting the most out of a constrained environment and using even small FPGAs for "big" projects -- it is like the digital design equivalent of _Can it run Doom?_. I became captivated by [SERV](https://github.com/olofk/serv) and how small a system-on-chip design can be. However, there was a gap between the 1-bit bit-serial SERV and prevalent 32-bit cores.
 
 That brings me to a second point: I wanted to explore how a sub-32-bit core scales between a 1-bit bit-serial and a 32-bit core in terms of area and performance. This is where FazyRV started as a scalable RISC-V core.
 
