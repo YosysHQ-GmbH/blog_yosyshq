@@ -75,4 +75,4 @@ All of the source code is on [GitHub](https://github.com/fischermoseley/manta), 
 
 If you have ideas about Manta, please open a GitHub issue on the repo! Otherwise you can reach me directly at fischer.moseley [at] gmail.com.
 
-Also if you like motorized shopping carts and other silly projects, feel free to check out [fischermoseley.com](fischermoseley.com) or my [YouTube](http://www.youtube.com/@fischerm) channel!
+Also if you like motorized shopping carts and other silly projects, feel free to check out [fischermoseley.com](https://fischermoseley.com) or my [YouTube](http://www.youtube.com/@fischerm) channel!
