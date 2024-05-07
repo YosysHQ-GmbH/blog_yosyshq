@@ -59,16 +59,14 @@ params:
             locale:
 
     widgets:
-        enabled:
-            - search
-            - archives
-            - tag-cloud
-
-        archives:
-            limit: 5
-
-        tagCloud:
-            limit: 10
+        homepage:
+            - type: search
+            - type: archives
+              params:
+                  limit: 5
+            - type: tag-cloud
+              params:
+                  limit: 10
 
     opengraph:
         twitter:
@@ -100,37 +98,43 @@ menu:
           name: Home
           url: /
           weight: -100
-          pre: home
+          params:
+            icon: home
 
         - identifier: about
           name: About
-          url: about
+          url: /about
           weight: -90
-          pre: user
+          params:
+            icon: user
 
         - identifier: newsletter
           name: Newsletter
-          url: newsletter
+          url: /newsletter
           weight: -80
-          pre: user
+          params:
+            icon: user
 
         - identifier: yug
           name: Yosys User's Group
-          url: yug
+          url: /yug
           weight: -75
-          pre: user
+          params:
+            icon: user
 
         - identifier: archives
           name: Archives
-          url: archives
+          url: /archives
           weight: -70
-          pre: archives
+          params:
+            icon: archives
 
         - identifier: search
           name: Search
-          url: search
+          url: /search
           weight: -60
-          pre: search
+          params:
+            icon: search
 
 related:
     includeNewer: true
