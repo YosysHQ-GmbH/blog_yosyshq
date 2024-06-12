@@ -57,7 +57,7 @@ instruments. Our contributions include, among many others:
 
  * 2029 &mdash; [Comet Interceptor], MIRMIS, and [ARIEL telescope] (Sun&ndash;Earth L<sub>2</sub>)
  * 2024 &mdash; [PREFIRE], infrared filters (Earth)
- * 2024 &mdash; [James Webb Space Telescope], Mid-Infrared Instrument filters (Sun&ndash;Earth L<sub>2</sub>)
+ * 2021 &mdash; [James Webb Space Telescope], Mid-Infrared Instrument filters (Sun&ndash;Earth L<sub>2</sub>)
  * 2018 &mdash; [InSight], Short-period Seismometer (Mars)
  * 2010 &mdash; [Stratospheric Observatory for Infrared Astronomy], filters (Earth)
  * 2005 &mdash; [Mars Reconnaissance Orbiter], Mars Climate Sounder optics (Mars)
