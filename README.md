@@ -15,7 +15,7 @@ Instructions for viewing locally
 
 Now open the localhost URL that `hugo server` printed to the console in your browser.
 
-Whenever you safe a change to a file, the perview in your browser is updated
+Whenever you safe a change to a file, the preview in your browser is updated
 in real time.
 
 Instructions for building static files
