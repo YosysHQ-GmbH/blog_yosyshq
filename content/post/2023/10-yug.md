@@ -18,6 +18,8 @@ If you'd like to join, then please [sign up to the newsletter](/newsletter) or f
 
 6 great presentations about open source FPGA projects! Watch the talks here: https://www.youtube.com/watch?v=wZiocG8DHfE&list=PL-ggbobZGIQuMGBkQgubVbJ1jffe2k18O
 
+Thanks to the presenters: Pat Deegan, Frans Skarman, Martín Heredia, Sasko Simonovski, Christopher Lozinski and Ashe Connor.
+
 ## YUG 6 - Hardware Security
 
 Katharina & Flavian from ETH Zurich introduced their tool for Information Flow Tracking: https://comsec.ethz.ch/research/hardware-design-security/cellift/
