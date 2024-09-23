@@ -14,6 +14,14 @@ If you'd like to join, then please [sign up to the newsletter](/newsletter) or f
 * [mastodon](https://fosstodon.org/@yosyshq) or
 * [twitter](https://twitter.com/YosysHQ).
 
+## YUG 7 - FPGA lightning talks
+
+6 great presentations about open source FPGA projects! Watch the talks here: https://www.youtube.com/watch?v=wZiocG8DHfE&list=PL-ggbobZGIQuMGBkQgubVbJ1jffe2k18O
+
+## YUG 6 - Hardware Security
+
+Katharina & Flavian from ETH Zurich introduced their tool for Information Flow Tracking: https://comsec.ethz.ch/research/hardware-design-security/cellift/
+
 ## YUG 5 - SystemVerilog with Pulp’s SVase
 
 * An introduction to [Bender](https://github.com/pulp-platform/bender), [Morty](https://github.com/pulp-platform/morty) and [SVase](https://github.com/pulp-platform/svase)
