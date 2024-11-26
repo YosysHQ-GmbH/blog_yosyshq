@@ -5,13 +5,19 @@ image = "/static-2023/yug.jpg"
 slug = 'yug'
 +++
 
-We have recently started a Yosys User's Group. You can see the [minutes of our first 5 calls here](https://docs.google.com/document/d/13e8hERQ_eqLQrdtH1WXnGUXDtgyQ8oa_zZWXPHJCiN0/edit#heading=h.dqkvsnhcju2v).
+The Yosys User's Group is for anyone who uses Yosys. We present recent updates to the tools, showcase new features and invite our users to present their work.
+
+You can see the [minutes of our calls here](https://docs.google.com/document/d/13e8hERQ_eqLQrdtH1WXnGUXDtgyQ8oa_zZWXPHJCiN0/edit#heading=h.dqkvsnhcju2v).
 
 If you'd like to join, then please [sign up to the newsletter](/newsletter) or follow us on:
 
 * [linkedin](https://www.linkedin.com/company/yosyshq),
+* [bluesky](https://bsky.app/profile/yosyshq.com),
 * [mastodon](https://fosstodon.org/@yosyshq) or
-* [twitter](https://twitter.com/YosysHQ).
+
+## YUG 8 - Using formal to detect information leakage
+
+After a long summer break, our meetings have resumed again! Our last meeting on October 29th had [Katharina CeesaySeitz](https://www.linkedin.com/in/katharina-ceesay-seitz-ba521087) from ETH Zürich present her work on using special netlist transformations in a custom Yosys pass in combination with formal verification to detect microarchitectural information leakage via hardware timing side channels. Watch her talk on our [Youtube channel](https://www.youtube.com/watch?v=Kxp-5kNMt40).
 
 ## YUG 7 - FPGA lightning talks
 
