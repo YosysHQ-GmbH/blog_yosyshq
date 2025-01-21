@@ -7,13 +7,20 @@ slug = 'yug'
 
 The Yosys User's Group is for anyone who uses Yosys. We present recent updates to the tools, showcase new features and invite our users to present their work.
 
-You can see the [minutes of our calls here](https://docs.google.com/document/d/13e8hERQ_eqLQrdtH1WXnGUXDtgyQ8oa_zZWXPHJCiN0/edit#heading=h.dqkvsnhcju2v).
+You can see the [minutes of our calls here](https://docs.google.com/document/d/13e8hERQ_eqLQrdtH1WXnGUXDtgyQ8oa_zZWXPHJCiN0).
 
 If you'd like to join, then please [sign up to the newsletter](/newsletter) or follow us on:
 
 * [linkedin](https://www.linkedin.com/company/yosyshq),
 * [bluesky](https://bsky.app/profile/yosyshq.com),
 * [mastodon](https://fosstodon.org/@yosyshq) or
+
+## YUG 9 - Understanding the Yosys synth_ice40 flow
+
+In this meetup, Krystine explores and explains the synthesis flow for ice40 FPGAs. Covering elaboration, flattening, and mapping the various blocks, this presentation will answer all your questions about the FPGA synthesis flow!
+
+* Watch the recording here: https://www.youtube.com/watch?v=s7KLNb8G_sI
+* Try the demo: https://gist.github.com/KrystalDelusion/b62e42905198b9c8a0917a5804ea3573
 
 ## YUG 8 - Using formal to detect information leakage
 
