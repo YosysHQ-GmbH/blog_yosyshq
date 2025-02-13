@@ -15,6 +15,17 @@ If you'd like to join, then please [sign up to the newsletter](/newsletter) or f
 * [bluesky](https://bsky.app/profile/yosyshq.com),
 * [mastodon](https://fosstodon.org/@yosyshq) or
 
+## YUG 10 - ASIC synthesis with Yosys - 18:00 CET Thursday 20th February
+
+Emil will present ASIC synthesis with Yosys, covering the following topics:
+
+* ASIC synthesis in general
+* Yosys scripts
+* abc scripts
+* New Yosys features for ASIC
+
+Looking forward to seeing you there!
+
 ## YUG 9 - Understanding the Yosys synth_ice40 flow
 
 In this meetup, Krystine explores and explains the synthesis flow for ice40 FPGAs. Covering elaboration, flattening, and mapping the various blocks, this presentation will answer all your questions about the FPGA synthesis flow!
