@@ -7,9 +7,11 @@ slug = 'yug'
 
 The Yosys User's Group is for anyone who uses Yosys. We present recent updates to the tools, showcase new features and invite our users to present their work.
 
-You can see the [minutes of our calls here](https://docs.google.com/document/d/13e8hERQ_eqLQrdtH1WXnGUXDtgyQ8oa_zZWXPHJCiN0).
+Join the call at [https://meet.jit.si/yosys-users-group](https://meet.jit.si/yosys-users-group).
 
-If you'd like to join, then please [sign up to the newsletter](/newsletter) or follow us on:
+Read the [minutes of our calls here](https://docs.google.com/document/d/13e8hERQ_eqLQrdtH1WXnGUXDtgyQ8oa_zZWXPHJCiN0).
+
+For a reminder before the next YUG, [sign up to the newsletter](/newsletter) or follow us on:
 
 * [linkedin](https://www.linkedin.com/company/yosyshq),
 * [bluesky](https://bsky.app/profile/yosyshq.com),
