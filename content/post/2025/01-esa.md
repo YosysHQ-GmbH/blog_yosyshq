@@ -7,7 +7,7 @@ tags: ["FPGA"]
 
 In what was a major achievement in open source FPGA development, [we have now added support for the largest FPGA](https://nebula.esa.int/4000141380) so far supported by open source tooling! 500,000 LUTs!
 
-In November 2024 we successfully concluded the European Space Agency funded [project](https://activities.esa.int/4000141380) in collaboration with [NanoExplore](https://nanoxplore.com/), known for their space rated FPGAs.
+In November 2024 we successfully concluded the European Space Agency funded [project](https://activities.esa.int/4000141380) in collaboration with [NanoXplore](https://nanoxplore.com/), known for their space rated FPGAs.
 
 The tool provides developers with a flexible and customizable option for designing for NG-Ultra FPGAs, offering increased reliability through the ability to cross-verify designs using two independent tools.
 
