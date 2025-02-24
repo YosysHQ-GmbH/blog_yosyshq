@@ -26,7 +26,7 @@ Emil will present ASIC synthesis with Yosys, covering the following topics:
 * abc scripts
 * New Yosys features for ASIC
 
-Looking forward to seeing you there!
+Watch the recording here: https://youtu.be/PlS4e5S5bCA
 
 ## YUG 9 - Understanding the Yosys synth_ice40 flow
 
