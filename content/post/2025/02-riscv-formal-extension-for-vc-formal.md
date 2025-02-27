@@ -65,13 +65,13 @@ This section outlines the core modifications and methodology used to **bridge th
 
 This flow demonstrates the formal verification process using the riscv-formal framework with the open-source SymbiYosys tool. It consists of components like RVFI, the wrapper, and `checks.cfg`. These components are used to generate `.sby` files, which are then processed by SymbiYosys to run verification checks and produce the results, ensuring that the RISC-V implementation adheres to formal specifications. This flow represents a streamlined, FOSS-based approach to formal verification.
 
-![FOSS SymbiYosys formal verification flow](\static\static-2025\Sby.png)
+![FOSS SymbiYosys formal verification flow](/static/static-2025/Sby.png)
 
 ### ii. Synopsys VC Formal Verification Flow
 
 This flow illustrates the modified process, where the riscv-formal framework is used with Synopsys VC Formal. The `.sby` files from the riscv-formal framework are first converted to `.tcl` scripts using a custom `sby to tcl` converter before being processed by VC Formal to generate verification results.
 
-![Synopsys VC Formal verification flow](\static\static-2025\VCF.png)
+![Synopsys VC Formal verification flow](/static/static-2025/VCF.png)
 
 The framework consists of **three key stages**, each automated for smooth verification:  
 
