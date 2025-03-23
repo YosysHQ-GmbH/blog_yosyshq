@@ -168,7 +168,7 @@ We have successfully developed a complete extension that seamlessly integrates t
 Using this **extended framework**, we formally verified our **Single Cycle RISC-V core (SCRV32I)** and cross-checked results with **SymbiYosys**. The verification confirms that our core adheres to the **RISC-V ISA specifications**, ensuring correctness and compliance.  
 
 ### 🔍 Practical Example 
-For a detailed walkthrough, refer to this section of the [repository](https://github.com/Chaotic-VRBlue/riscv-formal-vc-formal-extension?tab=readme-ov-file#running-the-example-scrv32i-processor-for-understanding-the-workflow), where we provide a step-by-step guide to implementing this extension on the example SCRV32I processor.  
+For a detailed walkthrough, refer to this section of the [complete repository on GitHub](https://github.com/Chaotic-VRBlue/riscv-formal-vc-formal-extension?tab=readme-ov-file#running-the-example-scrv32i-processor-for-understanding-the-workflow), where we provide a step-by-step guide to implementing this extension on the example SCRV32I processor.  
 
 The below section is dedicated to guiding you through the process of configuring custom RISC-V designs.  
 
