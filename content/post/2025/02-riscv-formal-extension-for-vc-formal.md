@@ -6,7 +6,7 @@ tags: ["blog"]
 image: /static-2025/Sby.png
 ---
 
-_This blog post is by Rohith V._
+This guest blog post was written by [Rohith V.](https://www.linkedin.com/in/v-rohith-km/)
 
 # RISC-V Formal Verification Framework Extension for Synopsys VC Formal
 
