@@ -176,7 +176,7 @@ to ensure that the `err` signal is set high when a fault is actually injected.
 This shows that formal verification is a powerful technique to use when designing EDA algorithms, not just for
 IC design itself.
 
-## Results, challenges and limitations
+## Results
 In the end, due to time constraints (and I must admit, poor project planning), TaMaRa was only able to handle
 simple circuits. This _does_ include some circuits using sequential primitives, but again, only simple ones.
 
@@ -195,16 +195,20 @@ inflated in size from the original. You'll also be able to see the `$reduce_or` 
 to combine the individual `err` signals of both the voters.
 
 With the algorithm applied, we can also use the formal verification methodology above to analyse, at a larger
-scale, how these protected circuits respond to injected faults.
+scale, how these protected circuits respond to injected faults. In the following graph, an
+"Unmitigated circuit" refers to a pre-TMR circuit; and an "Unprotected voter" circuit refers to a circuit with
+a voter, subject to fault injection, where the voter may also be hit with faults as well. For each of the
+samples on the X axis, 100 randomised trials were used and the outputs formally verified.
 
-TODO
+![TaMaRa graphs](/static-2025/tamara/graphs.png)
 
-One of the most difficult parts of this project, with its limited time frame, was working towards
-understanding the internal Yosys codebase. Approaching some 250,000 lines of C++ that has been maintained
-since 2013, it's a substantial undertaking to learn in a limited time frame. Whilst I _thought_ I did enough
-pre-reading of existing Yosys passes to understand how to build my own, I in fact did not. I made serious
-flaws re-implementing existing data structures (e.g. `tamara::RTLILAnyPtr`) when Yosys data
-structures for this already existed (in this case, `RTLIL::SigSpec`).
+All circuits tested generally perform the same, regardless of topology:
+
+![All unprotected voters](/static-2025/tamara/all_comb_unprot.svg)
+
+Individual circuits also appear to respond identically regardless of bit width:
+
+![Individual circuit comparison](/static-2025/tamara/mux_bit_sweep_unprot.svg)
 
 ## What's next?
 In 2026, I'm moving to start a PhD at Macquarie University's
