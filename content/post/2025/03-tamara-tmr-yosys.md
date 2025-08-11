@@ -49,12 +49,11 @@ For systems that operate in space - whether that be low-Earth orbit (LEO) or dee
 Single-Event Upsets (SEUs). SEUs are caused when ionising radiation strikes a transistor, causing it to
 transition from a 1 to a 0, or vice versa.
 
-In space, the Earth's atmosphere doesn't protect against the ever-present threat of radiation. This can come
-from many sources: stray cosmic rays, violent bursts from the Sun, or even extremely powerful extragalactic
-radiation. On an unprotected system, an unlucky SEU
-may corrupt the system’s state to such a severe degree that it may cause destruction or loss of life -
-particularly important given the safety-critical nature of most space-faring systems (satellites, crew
-capsules, missiles, etc).
+In space, the Earth's atmosphere is absent, and thus chips are completely unprotected from the ever-present
+threat of radiation. This radiation can come from many sources: stray cosmic rays, violent bursts from the Sun, or even
+extremely powerful extragalactic gamma-ray bursts. On an unprotected system, an unlucky SEU may corrupt the system’s
+state to such a severe degree that it may cause destruction or loss of life - particularly important given the
+safety-critical nature of a number of space-faring systems (satellites, crew capsules, etc).
 
 One way we can protect against SEUs is a design technique called Triple Modular Redundancy (TMR), which
 mitigates SEUs by triplicating key parts of the design and using voter circuits to select a non-corrupted
@@ -174,7 +173,8 @@ to ensure that the `err` signal is set high when a fault is actually injected.
 ![Verification flow](/static-2025/tamara/verification.svg)
 
 This shows that formal verification is a powerful technique to use when designing EDA algorithms, not just for
-IC design itself.
+IC design itself. There's certainly more work I'd like to perform in this area in future - perhaps fuzzing
+Yosys optimisation passes at scale to verify their correctness.
 
 ## Results
 In the end, due to time constraints (and I must admit, poor project planning), TaMaRa was only able to handle
@@ -191,7 +191,7 @@ calculation logic has been inserted:
 ![not_2bit schematic after TMR](/static-2025/tamara/not_2bit_tmr.svg)
 
 Because of the 2-bit bus, two voters are required, which is the reason this schematic has dramatically
-inflated in size from the original. You'll also be able to see the `$reduce_or` signal that has been inserted
+inflated in size from the original. You'll also be able to see the `$reduce_or` cell that has been inserted
 to combine the individual `err` signals of both the voters.
 
 With the algorithm applied, we can also use the formal verification methodology above to analyse, at a larger
@@ -201,6 +201,11 @@ a voter, subject to fault injection, where the voter may also be hit with faults
 samples on the X axis, 100 randomised trials were used and the outputs formally verified.
 
 ![TaMaRa graphs](/static-2025/tamara/graphs.png)
+
+This result shows that while the algorithm isn't _perfect_ in close-to-real-world scenarios, it _does_ improve
+the reliability of the circuit somewhat. Unprotected circuits are almost always affected by simulated SEUs,
+whereas after being processed with TaMaRa TMR, mitigated circuits have above a 50% chance of mitigating the
+SEU.
 
 All circuits tested generally perform the same, regardless of topology:
 
@@ -216,7 +221,10 @@ In 2026, I'm moving to start a PhD at Macquarie University's
 one of the very few computer engineering focused research groups in Australia.
 
 I'm planning to continue my work on domain-specific EDA, but focus more heavily on Yosys' sister project,
-[OpenROAD](https://github.com/The-OpenROAD-Project/OpenROAD), an RTL-GDS tool for ASICs.
+[OpenROAD](https://github.com/The-OpenROAD-Project/OpenROAD), an RTL-GDS tool for ASICs. In the case of
+radiation-hardening, performing this mitigation lower-down in the stack (i.e. during physical design/PnR) has
+the advantage of being able to more accurately consider the physical effects of radiation on the circuit. This
+type of information can be approximated, but is hard to accurately predict, at a synthesis pre-PnR level.
 
 There are many fields that don't suit typical, commercial EDA flows that focus on power, performance and area
 (PPA) exclusively, from radiation-hardened designs to high-security processors. Proprietary tools barricade
@@ -228,17 +236,17 @@ modify a tool, we know we haven't regressed its behaviour, and I'm hoping to wor
 verification to large designs using massively parallel, cluster-scale techniques.
 
 My hope is that if more academics and small companies become interested in FOSS EDA tools and contribute to
-them, we will eventually be able to have a powerful, community-led chip design pipeline that can rival
-commercial tools across many domains, making digital IC design an endeavour more suitable for hobbyists and
-academics without access to expensive proprietary tools. This, I believe, would be beneficial to everyone.
+them, we will eventually be able to have a powerful, community-led chip design pipeline that could rival
+commercial tools across a number of domains. This, I believe, would make IC design an endeavour more suitable
+for hobbyists and academics without access to expensive proprietary tools; and unlock opportunities for
+interesting new innovations in the EDA sector.
 
 ## Further reading
 The TaMaRa thesis (22k words) is available to read [on my
 website](https://mlyoung.cool/publications/An_Automated_TMR_Flow_for_Yosys.pdf), and is available under the
 permissive CC-BY licence.
 
-The code is available on [my GitHub](https://github.com/mattyoung101/tamara), and is available under the weak
-copyleft MPL 2.0.
+The code is available on [my GitHub](https://github.com/mattyoung101/tamara), and is available under the MPL 2.0.
 
 **A reminder again that TaMaRa is absolutely _not_ suitable for anything but simple test circuits.** You are more
 than welcome to give it a spin, or even contribute, though!
