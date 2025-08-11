@@ -231,9 +231,9 @@ There are many fields that don't suit typical, commercial EDA flows that focus o
 research into this area by making them impossible to modify. Conversely, FOSS tools like Yosys and OpenROAD
 give us a unique opportunity, as researchers, to customise these tools to our specific areas of interest and
 improve the tool in the process. For example, during my PhD, I'm hoping to improve both Yosys and OpenROAD,
-focusing on Layout Versus Schematic (LVS) and other verification techniques. It's important that when we
-modify a tool, we know we haven't regressed its behaviour, and I'm hoping to work on extending this
-verification to large designs using massively parallel, cluster-scale techniques.
+focusing on Layout Versus Schematic (LVS) and other verification techniques. My research, and increasingly
+others' as well, uses Yosys and OpenROAD for high-security and/or safety critical environments. Given this,
+it's important that when we modify a tool, we know we haven't regressed its behaviour.
 
 My hope is that if more academics and small companies become interested in FOSS EDA tools and contribute to
 them, we will eventually be able to have a powerful, community-led chip design pipeline that could rival
