@@ -251,6 +251,15 @@ The code is available on [my GitHub](https://github.com/mattyoung101/tamara), an
 **A reminder again that TaMaRa is absolutely _not_ suitable for anything but simple test circuits.** You are more
 than welcome to give it a spin, or even contribute, though!
 
+---
+
+Matt Young is a Bachelor of Computer Science (Honours) student at the University of Queensland in Australia,
+researching the application of novel EDA techniques to design specialised microprocessors for challenging
+environments.
+
+Matt can be reached [via LinkedIn](https://www.linkedin.com/in/mattyoung101/) or by emailing matt (at)
+mlyoung (dot) cool. Matt's [website](https://mlyoung.cool/) has more information on TaMaRa and other projects.
+
 ----
 
 _Header image attributon: https://esahubble.org/images/heic1509a/ &copy; ESA/Hubble (CC-BY 4.0)_
