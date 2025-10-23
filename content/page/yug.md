@@ -17,6 +17,12 @@ For a reminder before the next YUG, [sign up to the newsletter](/newsletter) or 
 * [bluesky](https://bsky.app/profile/yosyshq.com),
 * [mastodon](https://fosstodon.org/@yosyshq) or
 
+## YUG 11 - Triple modular redundancy - 18:00 CEST Thursday 9th October
+
+In this YUG, Matt Young, an Australian Bachelor of Computer Science (Honours) student, will explain how they worked towards an automated [TMR EDA flow](https://blog.yosyshq.com/p/tamara-towards-a-triple-modular-redundancy-pass-for-yosys/), with their thesis "TaMaRa: Towards an Automated TMR EDA Flow for Yosys". This seminar will cover both the design and formal verification, of the algorithm and its application to Yosys; whilst addressing notable limitations and future improvements.
+
+Watch the recording here: https://youtu.be/ZiIUKr-2IAE
+
 ## YUG 10 - ASIC synthesis with Yosys - 18:00 CET Thursday 20th February
 
 Emil will present ASIC synthesis with Yosys, covering the following topics:
