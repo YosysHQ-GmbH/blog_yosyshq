@@ -1,7 +1,7 @@
 baseurl: http://blog.yosyshq.com/
 languageCode: en-us
 theme: hugo-theme-stack
-paginate: 5
+pagination.pagerSize: 5
 title: YosysHQ Blog
 
 # Change it to your Disqus shortname before using
@@ -70,7 +70,7 @@ params:
 
     opengraph:
         twitter:
-            site: "@YosysHQ"
+            site: '@YosysHQ'
             card: summary
 
     defaultImage:
@@ -99,42 +99,42 @@ menu:
           url: /
           weight: -100
           params:
-            icon: home
+              icon: home
 
         - identifier: about
           name: About
           url: /about
           weight: -90
           params:
-            icon: user
+              icon: user
 
         - identifier: newsletter
           name: Newsletter
           url: /newsletter
           weight: -80
           params:
-            icon: user
+              icon: user
 
         - identifier: yug
           name: Yosys User's Group
           url: /yug
           weight: -75
           params:
-            icon: user
+              icon: user
 
         - identifier: archives
           name: Archives
           url: /archives
           weight: -70
           params:
-            icon: archives
+              icon: archives
 
         - identifier: search
           name: Search
           url: /search
           weight: -60
           params:
-            icon: search
+              icon: search
 
 related:
     includeNewer: true
