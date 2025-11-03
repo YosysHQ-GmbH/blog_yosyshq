@@ -150,3 +150,5 @@ related:
 markup:
     highlight:
         noClasses: false
+
+ignoreLogs: ['warning-goldmark-raw-html']
