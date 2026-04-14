@@ -8,6 +8,7 @@ draft: false
 ---
 
 The March release of Tabby CAD Suite is available for download.
+
 This version includes under-the-hood improvements to performance and bugfixes.
 
 In other YosysHQ news:
@@ -15,4 +16,5 @@ In other YosysHQ news:
 * CSO Matt Venn will be attending DATE for a panel discussion on Wednesday 22nd April. If you’re attending, make sure to say hi!
 
 Happy March,
+
 The YosysHQ Team
