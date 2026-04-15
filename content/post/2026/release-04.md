@@ -20,4 +20,5 @@ In other YosysHQ news:
 * Applications for the Tiny Tapeout demoscene competition are now open! Learn more and apply [here](https://tinytapeout.com/competitions/demoscene-ttsky26a-announce/).
 
 Happy April,
+
 The YosysHQ Team
