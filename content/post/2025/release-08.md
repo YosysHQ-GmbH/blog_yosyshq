@@ -15,7 +15,7 @@ The August release of Tabby CAD Suite is now available for download. Notable cha
 
 In other YosysHQ news:
 
-* In our latest guest blog post, Matt Young introduces an Automated Triple Modular Redundancy EDA Flow for Yosys! [https://blog.yosyshq.com/p/tamara-towards-a-triple-modular-redundancy-pass-for-yosys/](https://blog.yosyshq.com/p/tamara-towards-a-triple-modular-redundancy-pass-for-yosys/) 
+* In our latest guest blog post, Mel Young introduces an Automated Triple Modular Redundancy EDA Flow for Yosys! [https://blog.yosyshq.com/p/tamara-towards-a-triple-modular-redundancy-pass-for-yosys/](https://blog.yosyshq.com/p/tamara-towards-a-triple-modular-redundancy-pass-for-yosys/)
 
 Happy August,
 

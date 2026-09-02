@@ -5,7 +5,7 @@ image: /static-2025/tamara/tamara_header.jpg
 tags: ["blog"]
 ---
 
-This is a guest blog post by [Matt Young](https://mlyoung.cool/)
+This is a guest blog post by [Mel Young](https://mlyoung.cool/)
 
 ## Foreword
 Although I'm a computer scientist by education, I've always been interested in space since I was a kid. For a
@@ -253,7 +253,7 @@ than welcome to give it a spin, or even contribute, though!
 
 ---
 
-Matt Young is a Bachelor of Computer Science (Honours) student at the University of Queensland in Australia,
+Mel Young is a Bachelor of Computer Science (Honours) student at the University of Queensland in Australia,
 researching the application of novel EDA techniques to design specialised microprocessors for challenging
 environments.
 
@@ -264,5 +264,5 @@ mlyoung (dot) cool. Matt's [website](https://mlyoung.cool/) has more information
 
 _Header image attributon: https://esahubble.org/images/heic1509a/ &copy; ESA/Hubble (CC-BY 4.0)_
 
-_As a special exemption to the copyright notice at the end of the page, the author (Matt Young) hereby
+_As a special exemption to the copyright notice at the end of the page, the author (Mel Young) hereby
 releases this article text and diagrams under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1)_
