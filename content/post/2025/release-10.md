@@ -14,7 +14,7 @@ The October release of Tabby CAD Suite is now available for download. Notable ch
 
 In other YosysHQ news:
 
-* Our last Yosys Users Group meeting featured M.L. Young from the University of Queensland presenting their Honors thesis work, exploring how to automate insertion of triple modular redundancy with Yosys. If you missed it, you can watch the [recording](https://www.youtube.com/watch?v=ZiIUKr-2IAE) on the YosysHQ youtube channel!
+* Our last Yosys Users Group meeting featured Mel Young from the University of Queensland presenting their Honors thesis work, exploring how to automate insertion of triple modular redundancy with Yosys. If you missed it, you can watch the [recording](https://www.youtube.com/watch?v=ZiIUKr-2IAE) on the YosysHQ youtube channel!
 
 Happy October,
 

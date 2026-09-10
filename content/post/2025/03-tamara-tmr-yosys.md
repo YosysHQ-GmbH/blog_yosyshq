@@ -246,7 +246,7 @@ The TaMaRa thesis (22k words) is available to read [on my
 website](https://mlyoung.cool/publications/An_Automated_TMR_Flow_for_Yosys.pdf), and is available under the
 permissive CC-BY licence.
 
-The code is available on [my GitHub](https://github.com/mattyoung101/tamara), and is available under the MPL 2.0.
+The code is available on [my GitHub](https://github.com/mlyoung101/tamara), and is available under the MPL 2.0.
 
 **A reminder again that TaMaRa is absolutely _not_ suitable for anything but simple test circuits.** You are more
 than welcome to give it a spin, or even contribute, though!
@@ -257,8 +257,8 @@ Mel Young is a Bachelor of Computer Science (Honours) student at the University 
 researching the application of novel EDA techniques to design specialised microprocessors for challenging
 environments.
 
-Matt can be reached [via LinkedIn](https://www.linkedin.com/in/mattyoung101/) or by emailing matt (at)
-mlyoung (dot) cool. Matt's [website](https://mlyoung.cool/) has more information on TaMaRa and other projects.
+Mel can be reached [via LinkedIn](https://www.linkedin.com/in/mattyoung101/) or by emailing mel (at)
+mlyoung (dot) cool. Mel's [website](https://mlyoung.cool/) has more information on TaMaRa and other projects.
 
 ----
 
