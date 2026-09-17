@@ -7,7 +7,7 @@ tags: ["release notes"]
 draft: false
 ---
 
-The August release of Tabby CAD Suite is now available for download in Releases. This version includes under-the-hood improvements to performance and bugfixes.
+The August release of Tabby CAD Suite is now available for download. This version includes under-the-hood improvements to performance and bugfixes.
 
 In other YosysHQ news:
 
