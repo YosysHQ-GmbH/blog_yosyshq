@@ -8,6 +8,8 @@ draft: false
 
 There’s no denying that the whole world is moving towards instant gratification, solving hard problems quickly, and optimizing for efficiency. 
 
+![Give it to me](/static-2026/gif_nick_blog.gif)
+
 Sure - that’s great and all, but that mindset won’t get you far if you want to become a strong and competent engineer.
 
 ### Meet Nick.
