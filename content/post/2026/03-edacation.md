@@ -8,148 +8,110 @@ This is a guest blog post by Hendrik Folmer
 
 ## The FPGA "Hello World"
 
-Imagine you're a first-year engineering student. Today is your very first FPGA development lecture.
+Imagine you're a first-year engineering student. 
+Today is your very first FPGA development lecture.
 
-The professor starts with an inspiring introduction: "Unlike CPUs, FPGAs don't execute instructions one after another. You design hardware itself. Thousands of operations can happen in parallel. You describe logic, and the FPGA becomes the circuit you designed."
+The professor starts with an inspiring introduction: 
+"Unlike CPUs, FPGAs don't execute instructions one after another. 
+You design hardware itself. 
+Thousands of operations can happen in parallel. 
+You describe logic, and the FPGA becomes the circuit you designed."
 
-Amazing.
-
-You're told about lookup tables, routing, timing, placement, and the incredible flexibility of programmable hardware. It feels like digital LEGO with millions of pieces.
-
+You're told about lookup tables, routing, timing, placement, and the incredible flexibility of programmable hardware.
+It feels like digital LEGO with millions of pieces.
 You can't wait to build something.
+At the end of the lecture, the assignment seems refreshingly simple.
+"Before next week's lab, synthesize a blinking LED.
+It's the FPGA equivalent of Hello World."
 
-At the end of the lecture, the assignment seems refreshingly simple. "Before next week's lab, synthesize a blinking LED. It's the FPGA equivalent of Hello World."
+Perfect.
+How hard can one blinking LED be?
 
-Perfect. How hard can one blinking LED be?
-
-You get home, open your laptop, and Google:
-
-"Download Quartus."
+You get home, open your laptop, and Google: "Download Quartus"
 
 The first result looks right.
+Download size? 80 GB.
 
-Download size?
-
-80 GB.
-
-That's... larger than some games.
-
+That's...
+larger than some games.
 Fortunately, your university recommended an expensive laptop with plenty of storage, so after a while the download finally completes.
 
 You click Install.
 
-Disk space required:
-
-299.44 GB.
-
-Well... that's almost your SSD.
+Disk space required: 299.44 GB.
+Well...
+that's almost your SSD.
 
 After another long wait, Quartus finally launches.
-
 A popup immediately appears.
 
 License required.
 
-License?
-
-Nobody mentioned a license.
-
+License? Nobody mentioned a license.
 You ask your classmates.
-
 Nobody knows.
 
 You message the teaching assistant.
+"Oh...
+you installed Quartus Pro." "You only need Quartus Lite."
 
-"Oh... you installed Quartus Pro."
-
-"You only need Quartus Lite."
-
-Right.
-
+Right...
 So you uninstall the 300 GB installation.
-
 Delete the 80 GB installer.
-
 And start over.
 
-Back to Google.
-
-"Download Quartus Lite."
-
-Much better.
+Back to Google: "Download Quartus Lite"
 
 Only a 1.6 GB download.
+Much better.
 
 Installation finishes.
-
 Only 8.8 GB installed.
 
-Progress.
-
+Progress...
 You create your first project.
 
 The wizard asks you to select your target FPGA.
-
 The device list is empty.
 
 Empty.
 
 You ask another student.
 
-"Oh yeah, you also need the device files."
-
-Of course you do.
+"Oh yeah, you also need the device files." Of course you do.
 
 Back to Google.
-
 You find the Cyclone V device package.
-
 Only 500 MB.
 
-Easy.
-
+Easy...
 You install it.
 
 Version mismatch.
 
 Wait...
-
 Device files have versions?
 
 Apparently yes.
-
 Not only do they have versions, they must exactly match the Quartus version.
-
 Down to the last digit.
 
-Fine.
-
+Fine...
 You finally locate the correct version.
+Just before pressing Download, you notice another dropdown: "Lite / Standard / Pro"
 
-Just before pressing Download, you notice another dropdown.
-
-Lite / Standard / Pro
-
-That would have been the wrong download. Again.
-
-The correct device package?
-
-Another 1.3 GB.
+That would have been the wrong download.
+Again.
+The correct device package? Another 1.3 GB.
 
 Several hours after starting this adventure, you finally have a working FPGA development environment.
-
 Now the real learning can begin.
-
 Right?
 
-You launch Quartus.
-
-Create a project.
-
-Select the correct device.
-
-Add a VHDL file called blinky.vhd that you found somewhere online.
-
+You launch Quartus. 
+Create a project. 
+Select the correct device. 
+Add a VHDL file called blinky.vhd that you found somewhere online. 
 You look for the Compile button.
 
 Eventually you find a promising green triangle.
@@ -158,65 +120,34 @@ Click.
 
 Error: Top-level entity not specified.
 
-Top-level entity?
+Top-level entity? What's a top-level entity? Why do I need one?
 
-What's a top-level entity?
-
-Why do I need one?
-
-After some searching, you discover the setting.
-
+After some searching, you discover the setting. 
 Compile again.
 
 Success!
 
-Well...
+Well... 
+Almost. 
+183 warnings. 
+Is that good? Bad? Normal? Did anything actually work?
 
-Almost.
-
-183 warnings.
-
-Is that good?
-
-Bad?
-
-Normal?
-
-Did anything actually work?
-
-The software mentions timing analysis.
-
-Clock domains, Latch inference, Constraints, Pin assignments, Clock frequencies.
-
+The software mentions timing analysis, Clock domains, Latch inference, Constraints, Pin assignments, Clock frequencies. 
 None of those words were in today's lecture.
 
-You spend another hour trying to figure out where to tell the compiler your clock frequency.
-
+You spend another hour trying to figure out where to tell the compiler your clock frequency. 
 Eventually you stop and ask yourself: Wasn't today's assignment just to blink an LED?
 
 This isn't an unusual story.
 
-In fact, it's the most common story.
-
+In fact, it's the most common story. 
 When I ask students about their first FPGA course, the answer is remarkably consistent.
 
-"Hardware design is fascinating... but the tooling was awful."
+"Hardware design is fascinating... 
+but the tooling was awful."
 
-That's unfortunate.
-
-Because students don't remember the excitement of designing digital hardware.
-
-They remember spending an evening downloading software, installing device packages, fighting version mismatches, and deciphering hundreds of warnings before writing ten lines of code.
-
-The tooling became the course.
-
-It doesn't have to be this way.
-
-As educators, we can lower the barrier without lowering the standard.
-
-Students should spend their first hours learning hardware concepts, not wrestling with installers.
-
-That's why we built EDAcation. Because the first lesson in digital design shouldn't be how to download 300 GB of tools to blink an LED.
+That's why we built EDAcation. 
+Because the first lesson in digital design shouldn't be how to download 300 GB of tools to blink an LED.
 
 ## The synthesis path introduced and visualized
 
